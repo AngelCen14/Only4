@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b10kttwq2fjp"]
+
+[ext_resource type="PackedScene" uid="uid://dbgiehekd44py" path="res://assets/modelos/casa1/scene.gltf" id="1_bi4mn"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_bi4mn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -258.075, 492.236, 825.311)
