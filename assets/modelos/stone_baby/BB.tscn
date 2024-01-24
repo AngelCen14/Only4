@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgx2wo7hpm66u"]
+
+[ext_resource type="PackedScene" uid="uid://7pt750lgn0yw" path="res://assets/modelos/stone_baby/scene.gltf" id="1_ej3la"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_ej3la")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(2.0071e-05, -0.00197558, 0.0664033, 0.000674592, -0.0663998, -0.00197569, 0.0664292, 0.000674891, 1.80001e-17, 0, 0, 0)

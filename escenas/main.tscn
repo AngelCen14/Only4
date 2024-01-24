@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://b10kttwq2fjp"]
+[gd_scene load_steps=15 format=3 uid="uid://b10kttwq2fjp"]
 
 [ext_resource type="PackedScene" uid="uid://dyn2j262x1u07" path="res://escenas/terrain.tscn" id="1_1gjni"]
 [ext_resource type="Shader" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="2_dj2nr"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="3_hw7x2"]
 [ext_resource type="Script" path="res://addons/simplegrasstextured/grass.gd" id="4_aobsr"]
 [ext_resource type="PackedScene" uid="uid://did18edoe6ixo" path="res://escenas/player.tscn" id="6_bu24w"]
+[ext_resource type="PackedScene" uid="uid://umjil1i1ho6o" path="res://assets/modelos/fps_dungeon_extras/Barril.tscn" id="6_k6f3v"]
+[ext_resource type="PackedScene" uid="uid://ckndogem61xpx" path="res://assets/modelos/fps_dungeon_extras/Caja.tscn" id="7_gilhe"]
+[ext_resource type="PackedScene" uid="uid://cgx2wo7hpm66u" path="res://assets/modelos/stone_baby/BB.tscn" id="8_ek4jk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_htnp6"]
 sky_top_color = Color(0.0313726, 0.0470588, 0.0705882, 1)
@@ -21,7 +24,7 @@ fog_height = 41.56
 fog_height_density = 0.01
 volumetric_fog_density = 0.1553
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hi4jf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oup7i"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_dj2nr")
@@ -56,7 +59,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_hi4jf"),
+"material": SubResource("ShaderMaterial_oup7i"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -95,3 +98,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.654, 5.68381, 109.808)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.753788, 0.0695477, 0.653427, 0.559068, 0.590432, 0.582094, -0.345321, 0.804085, -0.483943, -56.8017, 68.959, 26.8187)
 shadow_enabled = true
+
+[node name="Node3D" parent="." instance=ExtResource("6_k6f3v")]
+transform = Transform3D(0.115972, 0, 0, 0, 0.115972, 0, 0, 0, 0.115972, -89.6732, 5.24032, 62.0684)
+
+[node name="Node3D2" parent="." instance=ExtResource("7_gilhe")]
+transform = Transform3D(0.115972, 0, 0, 0, 0.115972, 0, 0, 0, 0.115972, -91.4099, 5.27226, 62.5104)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("8_ek4jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.2777, 4.75593, 77.3295)
