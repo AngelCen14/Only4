@@ -1,16 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://b10kttwq2fjp"]
+[gd_scene load_steps=12 format=3 uid="uid://b10kttwq2fjp"]
 
 [ext_resource type="PackedScene" uid="uid://dyn2j262x1u07" path="res://escenas/terrain.tscn" id="1_1gjni"]
 [ext_resource type="Shader" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="2_dj2nr"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="3_hw7x2"]
 [ext_resource type="Script" path="res://addons/simplegrasstextured/grass.gd" id="4_aobsr"]
 [ext_resource type="PackedScene" uid="uid://did18edoe6ixo" path="res://escenas/player.tscn" id="6_bu24w"]
-[ext_resource type="PackedScene" uid="uid://dpaumjw1imvrn" path="res://assets/modelos/entrance_and_fences/puerta.gltf" id="6_byyjr"]
-[ext_resource type="PackedScene" uid="uid://bfaxoyxo0afgs" path="res://assets/modelos/entrance_and_fences/valla2.gltf" id="7_81fit"]
-[ext_resource type="PackedScene" uid="uid://g7m36aabyaws" path="res://assets/modelos/entrance_and_fences/valla3.gltf" id="8_qpdxu"]
-[ext_resource type="PackedScene" uid="uid://24rij4tni5e3" path="res://assets/modelos/entrance_and_fences/tumba.gltf" id="9_nxt6q"]
-[ext_resource type="PackedScene" uid="uid://b1kr6b4865pga" path="res://assets/modelos/entrance_and_fences/columna1.gltf" id="10_io5mn"]
-[ext_resource type="PackedScene" uid="uid://cbfaswexjtyqy" path="res://assets/modelos/entrance_and_fences/columna2.gltf" id="11_hrpe3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_htnp6"]
 sky_top_color = Color(0.0313726, 0.0470588, 0.0705882, 1)
@@ -27,7 +21,7 @@ fog_height = 41.56
 fog_height_density = 0.01
 volumetric_fog_density = 0.1553
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymlba"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hi4jf"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_dj2nr")
@@ -62,7 +56,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_ymlba"),
+"material": SubResource("ShaderMaterial_hi4jf"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -96,35 +90,8 @@ sgt_follow_normal = false
 metadata/SimpleGrassTextured = "2.0.3"
 
 [node name="Player" parent="." instance=ExtResource("6_bu24w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.641, 5.68381, 109.816)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.654, 5.68381, 109.808)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.753788, 0.0695477, 0.653427, 0.559068, 0.590432, 0.582094, -0.345321, 0.804085, -0.483943, -56.8017, 68.959, 26.8187)
 shadow_enabled = true
-
-[node name="puerta" parent="." instance=ExtResource("6_byyjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.4394, 2.11437, 43.2327)
-
-[node name="valla2" parent="." instance=ExtResource("7_81fit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.2272, 1.71472, 38.3703)
-
-[node name="valla3" parent="." instance=ExtResource("8_qpdxu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.6174, 1.47485, 42.2458)
-
-[node name="puerta2" parent="." instance=ExtResource("6_byyjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.9059, 1.97769, 51.1661)
-
-[node name="tumba" parent="." instance=ExtResource("9_nxt6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.0628, 1.58151, 46.7268)
-
-[node name="valla4" parent="." instance=ExtResource("7_81fit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.2986, 1.6914, 45.0972)
-
-[node name="valla5" parent="." instance=ExtResource("8_qpdxu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.0555, 1.44312, 46.1533)
-
-[node name="columna1" parent="." instance=ExtResource("10_io5mn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.1475, 2.25844, 50.7986)
-
-[node name="columna2" parent="." instance=ExtResource("11_hrpe3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9037, 2.06823, 47.6796)
