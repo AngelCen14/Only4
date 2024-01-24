@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Only4"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
