@@ -22,3 +22,8 @@ shape = SubResource("ConvexPolygonShape3D_lkuun")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56123, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Cabeza"]
+
+[node name="Linterna" type="SpotLight3D" parent="Cabeza/Camera3D"]
+light_energy = 16.0
+spot_range = 46.9347
+spot_angle = 32.2453

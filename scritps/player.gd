@@ -6,6 +6,7 @@ const SENSIBILIDAD: float = 0.003
 
 @onready var cabeza_jugador = $Cabeza
 @onready var camara = $Cabeza/Camera3D
+@onready var linterna = $Cabeza/Camera3D/Linterna
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -19,6 +20,7 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	gravedad(delta)
 	movimiento()
+	control_linterna()
 	
 func gravedad(delta):
 	# Manejar la gravedad :)
@@ -39,3 +41,7 @@ func movimiento():
 		velocity.z = move_toward(velocity.z, 0, VELOCIDAD)
 
 	move_and_slide()
+	
+func control_linterna():
+	if Input.is_action_just_pressed("linterna") :
+		linterna.visible = !linterna.visible
