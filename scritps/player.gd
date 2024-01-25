@@ -14,7 +14,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		cabeza_jugador.rotate_y(-event.relative.x * SENSIBILIDAD)
 		camara.rotate_x(-event.relative.y * SENSIBILIDAD)
-		camara.rotation.x = clamp(camara.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camara.rotation.x = clamp(camara.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
 func _physics_process(delta):
 	gravedad(delta)
