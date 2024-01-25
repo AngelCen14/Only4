@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://58g4aia0rss6"]
+
+[ext_resource type="PackedScene" uid="uid://bourmbs7qq3j0" path="res://assets/modelos/old_pine/scene.gltf" id="1_eckxf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vc32v"]
+radius = 0.35022
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_edrxx"]
+height = 1.33835
+radius = 0.369725
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_eckxf")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(1.72377, 0, 0, 0, 3.82754e-16, 2.28958, 0, -1.72377, 5.08389e-16, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/pine_obj_cleaner_materialmerger_gles/Object_3" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/pine_obj_cleaner_materialmerger_gles/Object_3/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37113e-08, -1, 0, 0.999999, -4.37114e-08, 0.0182535, 0.0528779, 0.9635)
+shape = SubResource("CylinderShape3D_vc32v")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Sketchfab_model/pine_obj_cleaner_materialmerger_gles/Object_3/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.45045, 1.95988, 0.609618)
+shape = SubResource("CylinderShape3D_edrxx")

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Old Pine (high-poly)
+* source:	https://sketchfab.com/3d-models/old-pine-high-poly-6255627de20947f6854a92d2f0d0e2ff
+* author:	Sereib (https://sketchfab.com/Sereib)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Old Pine (high-poly)" (https://sketchfab.com/3d-models/old-pine-high-poly-6255627de20947f6854a92d2f0d0e2ff) by Sereib (https://sketchfab.com/Sereib) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

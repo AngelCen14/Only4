@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stone black 3
+* source:	https://sketchfab.com/3d-models/stone-black-3-8a08e2306d4341998760a80bde04a099
+* author:	3dhdscan (https://sketchfab.com/3dhdscan)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stone black 3" (https://sketchfab.com/3d-models/stone-black-3-8a08e2306d4341998760a80bde04a099) by 3dhdscan (https://sketchfab.com/3dhdscan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

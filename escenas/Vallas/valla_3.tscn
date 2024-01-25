@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw4opiod74djc"]
+
+[ext_resource type="PackedScene" uid="uid://g7m36aabyaws" path="res://assets/modelos/entrance_and_fences/valla3.gltf" id="1_eng00"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kslgg"]
+size = Vector3(1.92944, 16.9663, 13.3068)
+
+[node name="valla3" instance=ExtResource("1_eng00")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/W_D_fbx/RootNode/Fence3_002/Fence3_002_Material_0" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/W_D_fbx/RootNode/Fence3_002/Fence3_002_Material_0/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 5.68434e-14, 0, -5.68434e-14, 1, -0.052124, -0.0812978, 6.15338)
+shape = SubResource("BoxShape3D_kslgg")
