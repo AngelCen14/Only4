@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6mwksjvem0r6"]
+
+[ext_resource type="Texture2D" uid="uid://cilv0m0355a13" path="res://assets/Texturas/arbol.png" id="1_vj8ui"]
+
+[node name="ArbolFondo" type="Node3D"]
+
+[node name="img1" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25877, 0)
+modulate = Color(0, 0.129412, 0.00392157, 1)
+texture = ExtResource("1_vj8ui")
+
+[node name="img2" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5.25877, 0)
+modulate = Color(0, 0.129412, 0.00392157, 1)
+texture = ExtResource("1_vj8ui")

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bfdn06x04hed8" path="res://assets/Texturas/grass_ground_0040_1k_XyLv8Z/ground_0040_height_1k.png" id="10_1mph6"]
 [ext_resource type="Texture2D" uid="uid://dtmmmald6xw7v" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/ground_0013_height_1k.png" id="11_810pu"]
 [ext_resource type="Texture2D" uid="uid://lqgxnphud23d" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/Dirt007.png" id="12_4kago"]
-[ext_resource type="MeshLibrary" uid="uid://cbrhuh7irydiw" path="res://assets/Mesh/vallas.tres" id="12_y7oo3"]
+[ext_resource type="MeshLibrary" uid="uid://cbrhuh7irydiw" path="res://assets/mesh/vallas.tres" id="12_y7oo3"]
 [ext_resource type="PackedScene" uid="uid://b10i5yfnwxo46" path="res://escenas/Follaje/Pine.tscn" id="13_be3de"]
 [ext_resource type="Texture2D" uid="uid://dpvw62bgw1c6o" path="res://assets/Texturas/grass_ground_0040_1k_XyLv8Z/ground_0040_normal_direct_1k.png" id="13_s42br"]
 [ext_resource type="Texture2D" uid="uid://bcfnomuwvrifa" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/ground_0013_normal_directx_1k.png" id="14_mgy5r"]
@@ -40,6 +40,7 @@ environment = SubResource("Environment_0k5t1")
 
 [node name="Luna" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.938483, -0.296889, 0.176372, -0.00185897, 0.515077, 0.857142, -0.345321, 0.804085, -0.483943, -56.8017, 68.959, 26.8187)
+light_energy = 0.07
 
 [node name="Terreno" type="Node3D" parent="."]
 transform = Transform3D(1.36127, 0, 0, 0, 1.07172, 0, 0, 0, 1.13625, 0, 0, 0)

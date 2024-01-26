@@ -74,6 +74,7 @@ linterna={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 global_illumination/sdfgi/frames_to_converge=0
 
 [shader_globals]

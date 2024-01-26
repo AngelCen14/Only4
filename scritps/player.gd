@@ -6,7 +6,7 @@ const SENSIBILIDAD: float = 0.003
 
 @onready var cabeza_jugador = $Cabeza
 @onready var camara = $Cabeza/Camera3D
-@onready var linterna = $Cabeza/Camera3D/Linterna
+@onready var luz_linterna = $Cabeza/Camera3D/Linterna/Luz
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -44,4 +44,4 @@ func movimiento():
 	
 func control_linterna():
 	if Input.is_action_just_pressed("linterna") :
-		linterna.visible = !linterna.visible
+		luz_linterna.visible = !luz_linterna.visible
