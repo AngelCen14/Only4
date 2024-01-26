@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Only4"
+run/main_scene="res://escenas/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -72,20 +74,7 @@ linterna={
 
 [rendering]
 
-textures/canvas_textures/default_texture_repeat=1
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
-lights_and_shadows/directional_shadow/size=2048
-lights_and_shadows/directional_shadow/size.mobile=1024
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
-global_illumination/gi/use_half_resolution=true
-camera/depth_of_field/depth_of_field_bokeh_quality=0
-anti_aliasing/screen_space_roughness_limiter/enabled=false
-lightmapping/probe_capture/update_speed=10.0
 global_illumination/sdfgi/frames_to_converge=0
-occlusion_culling/use_occlusion_culling=true
-lights_and_shadows/positional_shadow/atlas_size=2048
-lights_and_shadows/positional_shadow/atlas_size.mobile=1024
 
 [shader_globals]
 

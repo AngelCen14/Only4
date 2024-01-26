@@ -1,33 +1,30 @@
-[gd_scene load_steps=19 format=3 uid="uid://b10kttwq2fjp"]
+[gd_scene load_steps=18 format=3 uid="uid://b10kttwq2fjp"]
 
+[ext_resource type="Texture2D" uid="uid://biheroopeknd2" path="res://assets/Texturas/skybox_of_constellations_0.jpg" id="1_ohcv0"]
 [ext_resource type="PackedScene" uid="uid://did18edoe6ixo" path="res://escenas/player.tscn" id="6_bu24w"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="6_stmdd"]
 [ext_resource type="Resource" path="res://assets/TerrainData/data.hterrain" id="7_i3fm3"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="8_w4n7j"]
-[ext_resource type="Texture2D" uid="uid://yvthqdmhgshv" path="res://assets/cc0_textures/Grass0174.jpg" id="9_b6q8g"]
-[ext_resource type="Texture2D" uid="uid://bfdn06x04hed8" path="res://assets/cc0_textures/grass_ground_0040_1k_XyLv8Z/ground_0040_height_1k.png" id="10_1mph6"]
-[ext_resource type="Texture2D" uid="uid://dtmmmald6xw7v" path="res://assets/cc0_textures/dirt_ground_0013_1k_zW2rzw/ground_0013_height_1k.png" id="11_810pu"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="11_chxks"]
-[ext_resource type="Texture2D" uid="uid://lqgxnphud23d" path="res://assets/cc0_textures/dirt_ground_0013_1k_zW2rzw/Dirt007.png" id="12_4kago"]
-[ext_resource type="Texture2D" uid="uid://ok5f2fsfdsln" path="res://assets/modelos/grass/T_grass_10_A_M.png" id="12_suld8"]
-[ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="13_43q2n"]
-[ext_resource type="Texture2D" uid="uid://dpvw62bgw1c6o" path="res://assets/cc0_textures/grass_ground_0040_1k_XyLv8Z/ground_0040_normal_direct_1k.png" id="13_s42br"]
-[ext_resource type="Texture2D" uid="uid://bcfnomuwvrifa" path="res://assets/cc0_textures/dirt_ground_0013_1k_zW2rzw/ground_0013_normal_directx_1k.png" id="14_mgy5r"]
-[ext_resource type="MeshLibrary" uid="uid://cbrhuh7irydiw" path="res://assets/mesh/vallas.tres" id="15_xnl43"]
+[ext_resource type="Texture2D" uid="uid://yvthqdmhgshv" path="res://assets/Texturas/Grass0174.jpg" id="9_b6q8g"]
+[ext_resource type="Texture2D" uid="uid://bfdn06x04hed8" path="res://assets/Texturas/grass_ground_0040_1k_XyLv8Z/ground_0040_height_1k.png" id="10_1mph6"]
+[ext_resource type="Texture2D" uid="uid://dtmmmald6xw7v" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/ground_0013_height_1k.png" id="11_810pu"]
+[ext_resource type="Texture2D" uid="uid://lqgxnphud23d" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/Dirt007.png" id="12_4kago"]
+[ext_resource type="MeshLibrary" uid="uid://cbrhuh7irydiw" path="res://assets/Mesh/vallas.tres" id="12_y7oo3"]
+[ext_resource type="PackedScene" uid="uid://b10i5yfnwxo46" path="res://escenas/Follaje/Pine.tscn" id="13_be3de"]
+[ext_resource type="Texture2D" uid="uid://dpvw62bgw1c6o" path="res://assets/Texturas/grass_ground_0040_1k_XyLv8Z/ground_0040_normal_direct_1k.png" id="13_s42br"]
+[ext_resource type="Texture2D" uid="uid://bcfnomuwvrifa" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/ground_0013_normal_directx_1k.png" id="14_mgy5r"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6rge1"]
-sky_top_color = Color(0, 0.0352941, 0.152941, 1)
-sky_horizon_color = Color(0.0156863, 0.203922, 0.301961, 1)
-sky_energy_multiplier = 1.79
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7b8ys"]
+panorama = ExtResource("1_ohcv0")
 
-[sub_resource type="Sky" id="Sky_6erok"]
-sky_material = SubResource("ProceduralSkyMaterial_6rge1")
-radiance_size = 2
+[sub_resource type="Sky" id="Sky_wh16s"]
+sky_material = SubResource("PanoramaSkyMaterial_7b8ys")
+radiance_size = 1
 
-[sub_resource type="Environment" id="Environment_cgyec"]
+[sub_resource type="Environment" id="Environment_0k5t1"]
 background_mode = 2
-background_energy_multiplier = 0.22
-sky = SubResource("Sky_6erok")
+background_energy_multiplier = 0.61
+sky = SubResource("Sky_wh16s")
 
 [sub_resource type="Resource" id="Resource_8dv85"]
 script = ExtResource("8_w4n7j")
@@ -37,7 +34,7 @@ textures = [[ExtResource("9_b6q8g"), ExtResource("10_1mph6"), ExtResource("11_81
 [node name="Main" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_cgyec")
+environment = SubResource("Environment_0k5t1")
 
 [node name="Player" parent="." instance=ExtResource("6_bu24w")]
 
@@ -66,21 +63,37 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = false
 shader_params/u_tile_reduction = Vector4(0, 0, 0, 0)
 
-[node name="HTerrainDetailLayer" type="Node3D" parent="Terreno/HTerrain"]
-visible = false
-script = ExtResource("11_chxks")
-texture = ExtResource("12_suld8")
-density = 10.0
-shader_params/u_globalmap_tint_bottom = null
-shader_params/u_globalmap_tint_top = null
-shader_params/u_bottom_ao = null
-shader_params/u_instance_scale = null
-shader_params/u_roughness = null
-metadata/_editor_icon = ExtResource("13_43q2n")
-
 [node name="Props" type="Node" parent="Terreno"]
 
 [node name="GridMap" type="GridMap" parent="Terreno/Props"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh_library = ExtResource("15_xnl43")
+mesh_library = ExtResource("12_y7oo3")
 cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(243, 65482, 393218, 242, 65446, 393222, 242, 65429, 393222, 242, 65412, 393222, 242, 65395, 393222, 242, 65378, 393222, 242, 65361, 393222, 242, 65344, 393222, 242, 65327, 393222, 242, 65318, 393217, 233, 65318, 1114118, 216, 65318, 1114118, 199, 65318, 1114118, 182, 65318, 1114118, 165, 65318, 1114118, 149, 65318, 1114118, 139, 65318, 1114113, 139, 65307, 786438, 139, 65290, 786438, 139, 65273, 786438, 139, 65263, 786433, 128, 65263, 1376262, 112, 65263, 1376262, 95, 65263, 1376262, 78, 65263, 1376262, 61, 65263, 1376262, 44, 65263, 1376262, 27, 65263, 1376262, 10, 65263, 1376262, 65529, 65263, 1376262, 65512, 65263, 1376262, 65503, 65263, 1376256, 65494, 65263, 1376262, 65477, 65263, 1376262, 65460, 65263, 1376262, 65443, 65263, 1376262, 65426, 65263, 1376262, 65409, 65263, 1376262, 65392, 65263, 1376262, 65375, 65263, 1376262, 65358, 65263, 1376262, 65341, 65263, 1376262, 65324, 65263, 1376262, 65307, 65263, 1376262)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Arboles1" type="Node3D" parent="Terreno/Props"]
+
+[node name="Sketchfab_Scene" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1354, 6.64347e-05, -73.6674)
+
+[node name="Sketchfab_Scene5" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-0.0506627, 0, -0.998716, 0, 1, 0, 0.998716, 0, -0.0506627, -3.2845, 6.64347e-05, -73.6674)
+
+[node name="Sketchfab_Scene6" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-0.931126, 0, -0.364698, 0, 1, 0, 0.364698, 0, -0.931126, -21.2101, 6.64347e-05, -73.6674)
+
+[node name="Sketchfab_Scene7" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(0.33282, 0, -0.94299, 0, 1, 0, 0.94299, 0, 0.33282, -21.2101, 6.64347e-05, -67.5348)
+
+[node name="Sketchfab_Scene2" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-0.13409, 0, 0.990969, 0, 1, 0, -0.990969, 0, -0.13409, -2.61015, 6.64347e-05, -68.0137)
+
+[node name="Sketchfab_Scene3" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-0.970156, 0, 0.242481, 0, 1, 0, -0.242481, 0, -0.970156, -9.27681, 6.64347e-05, -68.0137)
+
+[node name="Sketchfab_Scene4" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-0.434822, 0, -0.900516, 0, 1, 0, 0.900516, 0, -0.434822, 3.6747, 6.64347e-05, -68.0137)
