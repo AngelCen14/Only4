@@ -4,12 +4,12 @@
 
 [node name="ArbolFondo" type="Node3D"]
 
-[node name="img1" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25877, 0)
-modulate = Color(0, 0.129412, 0.00392157, 1)
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.21781, 0, 0, 0, 1.29115, 0, 6.52667, 0.198827)
+modulate = Color(0.52549, 0.52549, 0.52549, 1)
 texture = ExtResource("1_vj8ui")
 
-[node name="img2" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5.25877, 0)
-modulate = Color(0, 0.129412, 0.00392157, 1)
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0412271, 0, -0.990197, 0, 1.21781, 0, 1.29034, 0, -0.0316372, 0, 6.52667, 0.198827)
+modulate = Color(0.52549, 0.52549, 0.52549, 1)
 texture = ExtResource("1_vj8ui")

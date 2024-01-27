@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://2euivu4ba2cm"]
+
+[ext_resource type="PackedScene" uid="uid://rl6how5e4pkd" path="res://assets/modelos/stone_black_3/scene.gltf" id="1_ao0q0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b8snt"]
+size = Vector3(5.3479, 4.83662, 6.35931)
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_ao0q0")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.000702771, 8.16709e-19, -0.00507865, 0.00507865, 1.02542e-18, 0.000702771, 1.12769e-18, -0.00512704, -6.68444e-19, 0, 0, 0)
+
+[node name="sutr16" parent="Sketchfab_model/sutr16_FBX/RootNode" index="0"]
+transform = Transform3D(139.819, 0, -2.09808e-05, 0, 139.819, -2.5411e-20, 2.09808e-05, -4.74338e-20, 139.819, 868.141, -1.75285e-13, -120.131)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/sutr16_FBX/RootNode/sutr16/sutr16_sutr16_0" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/sutr16_FBX/RootNode/sutr16/sutr16_sutr16_0/StaticBody3D" index="0"]
+transform = Transform3D(3.38739, -5.22769e-17, 0.451217, 6.53944e-17, 3.41716, -9.5344e-17, -0.451252, 1.03144e-16, 3.38713, -0.16429, 0.447197, -1.23327)
+shape = SubResource("BoxShape3D_b8snt")

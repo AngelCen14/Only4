@@ -1,30 +1,45 @@
-[gd_scene load_steps=16 format=3 uid="uid://b10kttwq2fjp"]
+[gd_scene load_steps=25 format=3 uid="uid://b10kttwq2fjp"]
 
 [ext_resource type="Texture2D" uid="uid://bv3x8ayjonhpg" path="res://assets/Texturas/moon.png" id="2_pgh17"]
 [ext_resource type="PackedScene" uid="uid://did18edoe6ixo" path="res://escenas/player.tscn" id="6_bu24w"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="6_stmdd"]
+[ext_resource type="Texture2D" uid="uid://bmpra76rkavxs" path="res://assets/Texturas/coblestone/mossy_cobblestone_diff_4k.png" id="7_c7clj"]
 [ext_resource type="Resource" path="res://assets/TerrainData/data.hterrain" id="7_i3fm3"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="8_w4n7j"]
 [ext_resource type="Texture2D" uid="uid://yvthqdmhgshv" path="res://assets/Texturas/Grass0174.jpg" id="9_b6q8g"]
-[ext_resource type="Texture2D" uid="uid://bfdn06x04hed8" path="res://assets/Texturas/grass_ground_0040_1k_XyLv8Z/ground_0040_height_1k.png" id="10_1mph6"]
+[ext_resource type="Texture2D" uid="uid://i5r23mlyh436" path="res://assets/Texturas/coblestone/mossy_cobblestone_disp_4k.png" id="10_q5ktm"]
 [ext_resource type="Texture2D" uid="uid://dtmmmald6xw7v" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/ground_0013_height_1k.png" id="11_810pu"]
 [ext_resource type="Texture2D" uid="uid://lqgxnphud23d" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/Dirt007.png" id="12_4kago"]
-[ext_resource type="MeshLibrary" uid="uid://cbrhuh7irydiw" path="res://assets/mesh/vallas.tres" id="12_y7oo3"]
+[ext_resource type="MeshLibrary" uid="uid://cbrhuh7irydiw" path="res://assets/Mesh/vallas.tres" id="12_y7oo3"]
 [ext_resource type="PackedScene" uid="uid://b10i5yfnwxo46" path="res://escenas/Follaje/Pine.tscn" id="13_be3de"]
-[ext_resource type="Texture2D" uid="uid://dpvw62bgw1c6o" path="res://assets/Texturas/grass_ground_0040_1k_XyLv8Z/ground_0040_normal_direct_1k.png" id="13_s42br"]
 [ext_resource type="PackedScene" uid="uid://yjbrnwkvmapo" path="res://escenas/Props/CasaSpawn.tscn" id="14_6lpki"]
 [ext_resource type="Texture2D" uid="uid://bcfnomuwvrifa" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/ground_0013_normal_directx_1k.png" id="14_mgy5r"]
+[ext_resource type="PackedScene" uid="uid://c6mwksjvem0r6" path="res://escenas/Follaje/arbol_fondo.tscn" id="15_kihur"]
+[ext_resource type="PackedScene" uid="uid://cdxc1hyu7ifle" path="res://escenas/Props/casa1.tscn" id="16_2q2al"]
+[ext_resource type="PackedScene" uid="uid://dhpohx0bt17o8" path="res://escenas/Props/cementerio.tscn" id="17_6kjsn"]
+[ext_resource type="PackedScene" uid="uid://2euivu4ba2cm" path="res://escenas/Props/rock.tscn" id="18_11e4g"]
+[ext_resource type="PackedScene" uid="uid://cfrqfnx1xrqkx" path="res://escenas/Props/bb.tscn" id="19_eml3w"]
+[ext_resource type="PackedScene" uid="uid://cw7log4sttgvi" path="res://escenas/Props/skele.tscn" id="20_wsnoa"]
+[ext_resource type="PackedScene" uid="uid://umjil1i1ho6o" path="res://escenas/Props/Barril.tscn" id="21_hujs2"]
+[ext_resource type="PackedScene" uid="uid://ckndogem61xpx" path="res://escenas/Props/Caja.tscn" id="22_2mbyy"]
+
+[sub_resource type="Environment" id="Environment_rpl2d"]
+volumetric_fog_density = 0.1
 
 [sub_resource type="Resource" id="Resource_8dv85"]
 script = ExtResource("8_w4n7j")
 mode = 0
-textures = [[ExtResource("9_b6q8g"), ExtResource("10_1mph6"), ExtResource("11_810pu"), ExtResource("12_4kago")], [null, ExtResource("13_s42br"), ExtResource("14_mgy5r"), null]]
+textures = [[ExtResource("9_b6q8g"), ExtResource("7_c7clj"), ExtResource("11_810pu"), ExtResource("12_4kago")], [null, ExtResource("10_q5ktm"), ExtResource("14_mgy5r"), null]]
 
 [node name="Main" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rpl2d")
 
 [node name="Player" parent="." instance=ExtResource("6_bu24w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87627, 0, 5.41824)
+floor_constant_speed = true
+floor_block_on_wall = false
 
 [node name="Luna" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.205033, -0.838737, 0.504462, -0.00185898, 0.515077, 0.857142, -0.978753, -0.17668, 0.104048, -293.284, 413.089, 344.409)
@@ -70,25 +85,374 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="Arboles1" type="Node3D" parent="Terreno/Props"]
 
 [node name="Sketchfab_Scene" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1354, 6.64347e-05, -73.6674)
+transform = Transform3D(0.94844, 0, 0, 0, 0.94844, 0, 0, 0, 0.94844, -13.1354, 6.64347e-05, -73.4097)
 
 [node name="Sketchfab_Scene5" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
-transform = Transform3D(-0.0506627, 0, -0.998716, 0, 1, 0, 0.998716, 0, -0.0506627, -3.2845, 6.64347e-05, -73.6674)
+transform = Transform3D(-0.0542894, 0, -1.07021, 0, 1.07159, 0, 1.07021, 0, -0.0542894, 22.4211, 6.64347e-05, -59.6629)
 
 [node name="Sketchfab_Scene6" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
-transform = Transform3D(-0.931126, 0, -0.364698, 0, 1, 0, 0.364698, 0, -0.931126, -21.2101, 6.64347e-05, -73.6674)
+transform = Transform3D(-1.08511, 0, -0.425011, 0, 1.16538, 0, 0.425011, 0, -1.08511, -23.6072, 6.64347e-05, -67.3592)
 
 [node name="Sketchfab_Scene7" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
-transform = Transform3D(0.33282, 0, -0.94299, 0, 1, 0, 0.94299, 0, 0.33282, -21.2101, 6.64347e-05, -67.5348)
+transform = Transform3D(0.295761, 0, -0.837988, 0, 0.88865, 0, 0.837988, 0, 0.295761, -21.2101, 6.64347e-05, -60.6033)
 
 [node name="Sketchfab_Scene2" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
-transform = Transform3D(-0.13409, 0, 0.990969, 0, 1, 0, -0.990969, 0, -0.13409, -2.61015, 6.64347e-05, -68.0137)
+transform = Transform3D(-0.156265, 0, 1.15485, 0, 1.16538, 0, -1.15485, 0, -0.156265, -1.93127, 6.64347e-05, -57.295)
 
 [node name="Sketchfab_Scene3" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
-transform = Transform3D(-0.970156, 0, 0.242481, 0, 1, 0, -0.242481, 0, -0.970156, -9.27681, 6.64347e-05, -68.0137)
+transform = Transform3D(-0.970156, 0, 0.242481, 0, 1, 0, -0.242481, 0, -0.970156, -9.27681, 6.64347e-05, -61.0822)
 
 [node name="Sketchfab_Scene4" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
-transform = Transform3D(-0.434822, 0, -0.900516, 0, 1, 0, 0.900516, 0, -0.434822, 3.6747, 6.64347e-05, -68.0137)
+transform = Transform3D(-0.506732, 0, -1.04944, 0, 1.16538, 0, 1.04944, 0, -0.506732, 5.39295, 6.64347e-05, -60.7705)
+
+[node name="Sketchfab_Scene8" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.803, 0.000153311, -43.5834)
+
+[node name="Sketchfab_Scene9" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(0.999852, 0, 0.0171906, 0, 1, 0, -0.0171906, 0, 0.999852, -59.2452, 0.000153311, -53.822)
+
+[node name="Sketchfab_Scene11" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(0.436708, 0, 0.899604, 0, 1.23316, 0, -0.899604, 0, 0.436708, -45.571, 0.000153311, -63.8081)
+
+[node name="Sketchfab_Scene12" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(0.960658, 0, 0.277734, 0, 0.890639, 0, -0.277734, 0, 0.960658, -34.4277, 0.000153311, -70.9974)
+
+[node name="Sketchfab_Scene10" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-0.287577, 0, -0.962326, 0, 1.52224, 0, 0.962326, 0, -0.287577, -63.744, 0.000153311, -42.8638)
+
+[node name="Sketchfab_Scene13" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-1.38303, 0, -1.88946, 0, 2.34155, 0, 1.88946, 0, -1.38303, -7.67103, -0.495684, 22.5595)
+
+[node name="Sketchfab_Scene14" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5425, 0, -2.13609)
+
+[node name="Sketchfab_Scene15" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(0.121252, 0, 1.42427, 0, 1.42942, 0, -1.42427, 0, 0.121252, 1.48872, 0, 57.5471)
+
+[node name="Sketchfab_Scene16" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.0892, 0.221594, -21.6523)
+
+[node name="Sketchfab_Scene17" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.6217, 0.728141, -4.90382)
+
+[node name="Sketchfab_Scene18" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.8581, 0.266484, 14.3846)
+
+[node name="Sketchfab_Scene19" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.1401, 0.050473, 31.8677)
+
+[node name="Sketchfab_Scene20" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.9971, 0.327352, 48.0482)
+
+[node name="Sketchfab_Scene21" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.8098, 0.0114024, 56.3153)
+
+[node name="Sketchfab_Scene22" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8669, 0.359019, 61.972)
+
+[node name="Sketchfab_Scene23" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5825, 2.63986, 58.1789)
+
+[node name="Sketchfab_Scene24" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1897, 2.4857, 65.9979)
+
+[node name="Sketchfab_Scene25" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.674, 0.000825323, 41.5006)
+
+[node name="Sketchfab_Scene26" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.7261, 5.6214e-05, 17.0173)
+
+[node name="Sketchfab_Scene27" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.8228, 0.0609239, -1.36719)
+
+[node name="Sketchfab_Scene28" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.6892, 0, -26.2807)
+
+[node name="Sketchfab_Scene29" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.1201, 1.02207e-06, -42.5628)
+
+[node name="Sketchfab_Scene30" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4131, 0.14929, -49.1188)
+
+[node name="Sketchfab_Scene31" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(0.562069, 0, 1.28922, 0, 1.40642, 0, -1.28922, 0, 0.562069, -34.4149, -0.495684, -23.3525)
+
+[node name="Sketchfab_Scene32" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-0.566521, 0, 1.28727, 0, 1.40642, 0, -1.28727, 0, -0.566521, -58.027, -0.495684, 32.4705)
+
+[node name="Sketchfab_Scene33" parent="Terreno/Props/Arboles1" instance=ExtResource("13_be3de")]
+transform = Transform3D(-0.982142, 0, -1.06006, 0, 1.44511, 0, 1.06006, 0, -0.982142, -0.680267, -0.495684, -23.732)
 
 [node name="Casa_Spawn" parent="Terreno/Props" instance=ExtResource("14_6lpki")]
-transform = Transform3D(1.20978, 0, 0, 0, 1.20978, 0, 0, 0, 1.20978, -7.44567, -1.38844, 8.49329)
+transform = Transform3D(1.20978, 0, 0, 0, 1.20978, 0, 0, 0, 1.20978, -6.0802, -1.38844, 6.66056)
+
+[node name="Arboles2" type="Node3D" parent="Terreno/Props"]
+
+[node name="ArbolFondo" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.2855, 5.76947, 69.4105)
+
+[node name="ArbolFondo2" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.7831, 7.63283, 64.691)
+
+[node name="ArbolFondo3" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.4748, 10.0955, 69.6216)
+
+[node name="ArbolFondo4" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.1097, 7.06791, 57.8041)
+
+[node name="ArbolFondo5" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.2874, 1.43227, 81.5834)
+
+[node name="ArbolFondo6" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.4534, 0.761681, 46.0568)
+
+[node name="ArbolFondo7" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.202, 7.06372, 47.463)
+
+[node name="ArbolFondo8" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.1657, 0.718966, 35.6779)
+
+[node name="ArbolFondo9" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.5515, 3.25487, 20.1625)
+
+[node name="ArbolFondo10" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.476, 3.97655, 4.43813)
+
+[node name="ArbolFondo11" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.784, 3.10571, -18.2686)
+
+[node name="ArbolFondo12" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.098, 2.46008, -8.32705)
+
+[node name="ArbolFondo13" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.38, 14.8114, -66.851)
+
+[node name="ArbolFondo14" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.0752, 1.28696, -81.2249)
+
+[node name="ArbolFondo15" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.7828, 8.40998, -92.7377)
+
+[node name="ArbolFondo16" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2986, 1.04915, -86.7937)
+
+[node name="ArbolFondo17" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.644, 17.4513, -106.755)
+
+[node name="ArbolFondo18" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2339, 5.92063, -95.8735)
+
+[node name="ArbolFondo19" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4031, 0.602104, -88.7189)
+
+[node name="ArbolFondo20" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55861, 5.88792, -100.327)
+
+[node name="ArbolFondo21" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75404, 1.68236, -87.0655)
+
+[node name="ArbolFondo22" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.9762, 3.21211, 48.8924)
+
+[node name="ArbolFondo23" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.8232, 5.03689, 70.1909)
+
+[node name="ArbolFondo24" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5851, 3.77102, 72.0644)
+
+[node name="ArbolFondo25" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.7628, 4.53461, 21.1349)
+
+[node name="ArbolFondo26" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.3722, 9.12125, 31.9682)
+
+[node name="ArbolFondo27" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.6026, 16.8652, 47.8475)
+
+[node name="ArbolFondo28" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.236, 3.54686, -43.301)
+
+[node name="ArbolFondo29" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.4209, 5.72872, -57.7532)
+
+[node name="ArbolFondo30" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.1303, 11.239, -84.4251)
+
+[node name="ArbolFondo31" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.8072, 18.8851, -81.1465)
+
+[node name="ArbolFondo32" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.6665, 27.9813, -94.612)
+
+[node name="ArbolFondo33" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.996, 26.5459, -64.3247)
+
+[node name="ArbolFondo34" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7858, 22.2191, -122.951)
+
+[node name="ArbolFondo35" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82741, 23.7986, -125.321)
+
+[node name="ArbolFondo36" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.66701, 23.0878, -121.502)
+
+[node name="ArbolFondo37" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5508, 26.9132, -84.9493)
+
+[node name="ArbolFondo38" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.6368, 1.78572, -47.4815)
+
+[node name="ArbolFondo39" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.6761, 37.1098, -76.0297)
+
+[node name="ArbolFondo40" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9783, 1.51651, -60.0783)
+
+[node name="ArbolFondo41" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.008, 17.7469, 45.3129)
+
+[node name="ArbolFondo42" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.721, 30.108, 42.662)
+
+[node name="ArbolFondo43" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.138, 21.8048, 87.2341)
+
+[node name="ArbolFondo44" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.866, 8.49131, -16.0345)
+
+[node name="ArbolFondo45" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.533, 16.6707, -26.6172)
+
+[node name="ArbolFondo46" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.0561, 3.24577, -29.9028)
+
+[node name="ArbolFondo47" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5742, 9.41326, 11.1571)
+
+[node name="ArbolFondo48" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.838, 12.7868, -23.2757)
+
+[node name="ArbolFondo49" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.43, 13.6446, 13.5328)
+
+[node name="ArbolFondo50" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.759, 15.2165, -21.1394)
+
+[node name="ArbolFondo51" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.55, 15.2068, 21.7625)
+
+[node name="ArbolFondo52" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.93, 13.122, 10.7457)
+
+[node name="ArbolFondo53" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.627, 12.6248, 2.54225)
+
+[node name="ArbolFondo54" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.074, 12.2411, 4.22671)
+
+[node name="ArbolFondo55" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.278, 12.7608, -3.01988)
+
+[node name="ArbolFondo56" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.369, 14.7008, -13.5653)
+
+[node name="ArbolFondo57" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.632, 12.3235, -12.337)
+
+[node name="ArbolFondo58" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.257, 13.1305, 26.5505)
+
+[node name="ArbolFondo59" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.232, 11.5963, 16.2995)
+
+[node name="ArbolFondo60" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.425, 17.5892, -28.137)
+
+[node name="ArbolFondo61" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.274, 12.4818, -19.7054)
+
+[node name="ArbolFondo62" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.857, 11.0503, -2.00413)
+
+[node name="ArbolFondo63" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.955, 13.8026, -9.56338)
+
+[node name="ArbolFondo64" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.679, 11.4394, -8.41975)
+
+[node name="ArbolFondo65" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.5102, 3.41033, 8.98391)
+
+[node name="ArbolFondo66" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0377, 2.41681, 22.1481)
+
+[node name="ArbolFondo67" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4273, 12.4708, 71.9818)
+
+[node name="ArbolFondo68" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9352, 17.0348, 84.5988)
+
+[node name="ArbolFondo69" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.754, 23.6448, 91.2066)
+
+[node name="ArbolFondo70" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.1867, 14.3055, 59.8759)
+
+[node name="ArbolFondo71" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.8285, 19.8225, -76.5035)
+
+[node name="ArbolFondo72" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5004, 11.1965, -87.1707)
+
+[node name="ArbolFondo73" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.53, 19.0772, -99.0297)
+
+[node name="ArbolFondo74" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.8695, 12.8576, -90.2891)
+
+[node name="ArbolFondo75" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.2547, 6.71771, -70.3157)
+
+[node name="ArbolFondo76" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.924, 10.8739, 21.4673)
+
+[node name="ArbolFondo77" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3083, 21.1044, 99.4221)
+
+[node name="ArbolFondo78" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.3719, 17.2506, 95.9617)
+
+[node name="ArbolFondo79" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.1534, 25.0219, 104.167)
+
+[node name="ArbolFondo80" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.0732, 26.2519, 107.28)
+
+[node name="ArbolFondo81" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.0166, 20.1772, 41.4938)
+
+[node name="ArbolFondo82" parent="Terreno/Props/Arboles2" instance=ExtResource("15_kihur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.117, 26.2948, -39.4304)
+
+[node name="Casa1" parent="Terreno/Props" instance=ExtResource("16_2q2al")]
+transform = Transform3D(-5.55054e-08, 0, 1.26982, 0, 1.26982, 0, -1.26982, 0, -5.55054e-08, -58.0433, 0.0136212, 5.64812)
+
+[node name="Cementerio" parent="Terreno/Props" instance=ExtResource("17_6kjsn")]
+transform = Transform3D(-0.000277732, 0, 0.0202958, 0, 0.0202977, 0, -0.0202958, 0, -0.000277732, -28.9617, -0.61723, 19.5449)
+
+[node name="Rocks" type="Node3D" parent="Terreno/Props"]
+
+[node name="Rock" parent="Terreno/Props/Rocks" instance=ExtResource("18_11e4g")]
+transform = Transform3D(0.0669782, 0, 0.0553876, 0, 0.086913, 0, -0.0553876, 0, 0.0669782, 1.52682, 0, 30.639)
+
+[node name="Skele" parent="Terreno/Props" instance=ExtResource("20_wsnoa")]
+transform = Transform3D(0.154279, 0, -0.737076, 0, 0.753049, 0, 0.737076, 0, 0.154279, 39.0821, -0.0591819, 23.215)
+
+[node name="bb" parent="Terreno/Props" instance=ExtResource("19_eml3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1611, -2.55518e-07, 39.0808)
+
+[node name="Barril" parent="." instance=ExtResource("21_hujs2")]
+transform = Transform3D(0.15653, 0, 0, 0, 0.15653, 0, 0, 0, 0.15653, 13.7294, 0, 1.02695)
+
+[node name="Node3D" parent="." instance=ExtResource("22_2mbyy")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, 16.467, 0, 3.45969)

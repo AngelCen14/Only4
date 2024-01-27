@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhpohx0bt17o8"]
+
+[ext_resource type="PackedScene" uid="uid://c8jcl88kndbg8" path="res://assets/modelos/cementerio/scene.gltf" id="1_gegj0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6gupf"]
+size = Vector3(18.3971, 20.4102, 11.0083)
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_gegj0")]
+transform = Transform3D(0.0584771, 0, 0, 0, 0.0584771, 0, 0, 0, 0.0584771, 23.3645, 0, 0)
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, -42.8886, 0, 0)
+
+[node name="31d0f8f3e2f94d18b7d041e45a592587_fbx" parent="Sketchfab_model" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 39.8718, -118.523, 2.63174e-14)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/31d0f8f3e2f94d18b7d041e45a592587_fbx/RootNode/front_door_low_001/front_door_low_001_sclep_0" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/31d0f8f3e2f94d18b7d041e45a592587_fbx/RootNode/front_door_low_001/front_door_low_001_sclep_0/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, -1.79571e-18, 2.84217e-14, 1, -9.9476e-14, 0, 9.9476e-14, 1, 0.0929813, -7.68935, -5.00415)
+shape = SubResource("BoxShape3D_6gupf")
