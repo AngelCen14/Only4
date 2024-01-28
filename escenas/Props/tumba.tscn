@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://byic411wmowe6"]
+
+[ext_resource type="PackedScene" uid="uid://r7st3gd8k4un" path="res://assets/modelos/tombstones/scene.gltf" id="1_kg26a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ad78"]
+size = Vector3(1.97009, 0.240356, 1.35742)
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_kg26a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.82638)
+
+[node name="Object_2" parent="Sketchfab_model/model_obj_cleaner" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.402949)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/model_obj_cleaner/Object_2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/model_obj_cleaner/Object_2/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215149, 3.78202, 0.178711)
+shape = SubResource("BoxShape3D_6ad78")
+
+[node name="Object_3" parent="Sketchfab_model/model_obj_cleaner" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.402949)

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7iaapvy83ey"]
+
+[ext_resource type="PackedScene" uid="uid://umjil1i1ho6o" path="res://escenas/Props/Barril.tscn" id="1_q17i0"]
+[ext_resource type="PackedScene" uid="uid://ckndogem61xpx" path="res://escenas/Props/Caja.tscn" id="2_ebqs4"]
+
+[node name="GroupBox" type="Node3D"]
+
+[node name="Barril" parent="." instance=ExtResource("1_q17i0")]
+transform = Transform3D(0.15653, 0, 0, 0, 0.15653, 0, 0, 0, 0.15653, -2.18371, 0, -3.22022)
+
+[node name="Barril2" parent="." instance=ExtResource("1_q17i0")]
+transform = Transform3D(0.15653, 0, 0, 0, 0.15653, 0, 0, 0, 0.15653, -2.07637, 0, -4.58632)
+
+[node name="Barril3" parent="." instance=ExtResource("1_q17i0")]
+transform = Transform3D(0.15653, 0, 0, 0, 0.15653, 0, 0, 0, 0.15653, -5.16097, 0, -1.89657)
+
+[node name="Caja" parent="." instance=ExtResource("2_ebqs4")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, -7.24464, -4.76837e-07, -3.4965)
+
+[node name="Caja2" parent="." instance=ExtResource("2_ebqs4")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, -7.27621, 0, -5.2432)
+
+[node name="Caja3" parent="." instance=ExtResource("2_ebqs4")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, -5.45044, 0, -5.25675)
+
+[node name="Caja6" parent="." instance=ExtResource("2_ebqs4")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, -3.72504, 0, -3.45392)
+
+[node name="Caja7" parent="." instance=ExtResource("2_ebqs4")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, -3.71273, 0, -5.20007)
+
+[node name="Caja4" parent="." instance=ExtResource("2_ebqs4")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, -5.47395, 0, -3.51572)
+
+[node name="Caja5" parent="." instance=ExtResource("2_ebqs4")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, -6.68865, 1.6598, -4.63278)
+
+[node name="Caja8" parent="." instance=ExtResource("2_ebqs4")]
+transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, -4.92228, 1.6598, -4.36241)

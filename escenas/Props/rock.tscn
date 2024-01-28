@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://rl6how5e4pkd" path="res://assets/modelos/stone_black_3/scene.gltf" id="1_ao0q0"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b8snt"]
-size = Vector3(5.3479, 4.83662, 6.35931)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lgclx"]
+radius = 3.10937
+height = 9.46262
 
 [node name="Sketchfab_Scene" instance=ExtResource("1_ao0q0")]
 
@@ -16,5 +17,5 @@ transform = Transform3D(139.819, 0, -2.09808e-05, 0, 139.819, -2.5411e-20, 2.098
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/sutr16_FBX/RootNode/sutr16/sutr16_sutr16_0" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/sutr16_FBX/RootNode/sutr16/sutr16_sutr16_0/StaticBody3D" index="0"]
-transform = Transform3D(3.38739, -5.22769e-17, 0.451217, 6.53944e-17, 3.41716, -9.5344e-17, -0.451252, 1.03144e-16, 3.38713, -0.16429, 0.447197, -1.23327)
-shape = SubResource("BoxShape3D_b8snt")
+transform = Transform3D(0.46186, -0.407834, -2.92352, 2.94466, 0.272924, 0.427057, 0.208773, -2.94725, 0.444097, -1.29913, 0.160562, 0.329833)
+shape = SubResource("CapsuleShape3D_lgclx")

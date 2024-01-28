@@ -47,8 +47,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6pdfe")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_avfor"]
-size = Vector3(145.13, 143.235, 144.536)
+[sub_resource type="BoxShape3D" id="BoxShape3D_k8cul"]
+size = Vector3(144.536, 143.927, 142.726)
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(0.452258, 0, 0, 0, 0.452258, 0, 0, 0, 0.452258, 0, 0, 0)
@@ -62,9 +62,7 @@ mesh = SubResource("ArrayMesh_322mr")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="crate_1/crate_1_crate_0"]
-transform = Transform3D(0.0731189, 0, 0, 0, 0.0731189, 0, 0, 0, 0.0731189, 0, 4.76568, 0)
-top_level = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crate_1/crate_1_crate_0/StaticBody3D"]
-transform = Transform3D(0.155557, 0, 0, 0, 0.155557, 0, 0, 0, 0.155557, 0, -53.4427, 0)
-shape = SubResource("BoxShape3D_avfor")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173734, -0.523026, 0.888221)
+shape = SubResource("BoxShape3D_k8cul")
