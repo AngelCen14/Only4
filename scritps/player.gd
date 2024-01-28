@@ -1,12 +1,17 @@
 extends CharacterBody3D
 
-const VELOCIDAD: float = 5.0
-const GRAVEDAD: float = 9.8
-const SENSIBILIDAD: float = 0.003
+const VELOCIDAD = 5.0
+const GRAVEDAD = 9.8
+const SENSIBILIDAD = 0.003
+
+# Agitamiento camara 
+const FRECUENCIA_AGITAMENTO = 2.0
+const AMPLITUD_AGITAMIENTO = 0.08
+var tiempo_agitamiento  = 0.0
 
 @onready var cabeza_jugador = $Cabeza
 @onready var camara = $Cabeza/Camera3D
-@onready var linterna = $Cabeza/Camera3D/Linterna
+@onready var luz_linterna = $Cabeza/Camera3D/Linterna/Luz
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -19,17 +24,16 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	gravedad(delta)
-	movimiento()
+	movimiento(delta)
 	control_linterna()
 	
 func gravedad(delta):
 	# Manejar la gravedad :)
 	if not is_on_floor():
 		velocity.y -= GRAVEDAD * delta
-		
-func movimiento():
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+
+func movimiento(delta):
+	# MOVIMIENTO DEL PERSONAJE
 	var input_dir = Input.get_vector("left", "right", "up", "back")
 	var direction = (cabeza_jugador.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
@@ -42,6 +46,16 @@ func movimiento():
 
 	move_and_slide()
 	
+	# AGITAMIENTO DE LA CAMARA PARA SIMULAR LOS PASOS DEL PERSONAJE
+	tiempo_agitamiento += delta * velocity.length()
+	camara.transform.origin = agitamiento_camara(tiempo_agitamiento)
+	
+func agitamiento_camara(tiempo) -> Vector3:
+	var posicion = Vector3.ZERO
+	posicion.y = sin(tiempo * FRECUENCIA_AGITAMENTO) * AMPLITUD_AGITAMIENTO
+	posicion.x = cos(tiempo * FRECUENCIA_AGITAMENTO / 2) * AMPLITUD_AGITAMIENTO
+	return posicion
+	
 func control_linterna():
 	if Input.is_action_just_pressed("linterna") :
-		linterna.visible = !linterna.visible
+		luz_linterna.visible = !luz_linterna.visible
