@@ -73,6 +73,10 @@ linterna={
 ]
 }
 
+[physics]
+
+3d/run_on_separate_thread=true
+
 [rendering]
 
 global_illumination/sdfgi/frames_to_converge=0
