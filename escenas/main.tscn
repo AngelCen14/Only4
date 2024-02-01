@@ -43,7 +43,7 @@ sky_material = SubResource("ProceduralSkyMaterial_lqpnx")
 background_mode = 2
 sky = SubResource("Sky_1aaxu")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvo1i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bk7h"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_757cx")
@@ -78,7 +78,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_pvo1i"),
+"material": SubResource("ShaderMaterial_0bk7h"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -777,12 +777,19 @@ transform = Transform3D(0.0102941, 0, -0.000353558, 0, 0.0106814, 0, 0.000233965
 [node name="Cementerio4" parent="Terreno/NavigationRegion3D/Props/Cementerios" instance=ExtResource("17_6kjsn")]
 transform = Transform3D(0.0102955, 0, 0.000244949, 0, 0.0106814, 0, -0.000162094, 0, 0.0155581, 1.43428, -0.176664, -19.9363)
 
-[node name="bicho_animado" parent="." instance=ExtResource("30_qhh5h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.620968, 0, 1.63078)
+[node name="EnemyEnvironment" type="Node" parent="."]
+
+[node name="bicho_animado" parent="EnemyEnvironment" instance=ExtResource("30_qhh5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6507, 0, 6.1943)
 floor_max_angle = 0.645772
 floor_snap_length = 0.01
-player_plath = NodePath("../Player")
-player_plath2 = NodePath("../Marker3D")
+player_plath = NodePath("../../Player")
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6807, 0.422263, 12.0789)
+[node name="Marker3D" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3173, 0, 22.8458)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.857, 0, 11.3097)
+
+[node name="Marker3D3" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1424, 9.53674e-07, 17.0248)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp37wb1qkpa1j"]
+
+[ext_resource type="Script" path="res://scritps/Wander.gd" id="1_yt8jf"]
+
+[node name="Wander" type="Node3D"]
+script = ExtResource("1_yt8jf")
