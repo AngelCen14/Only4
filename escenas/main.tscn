@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dtmmmald6xw7v" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/ground_0013_height_1k.png" id="11_810pu"]
 [ext_resource type="Texture2D" uid="uid://lqgxnphud23d" path="res://assets/Texturas/dirt_ground_0013_1k_zW2rzw/Dirt007.png" id="12_4kago"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="12_w6ajf"]
-[ext_resource type="MeshLibrary" uid="uid://cbrhuh7irydiw" path="res://assets/Mesh/vallas.tres" id="12_y7oo3"]
+[ext_resource type="MeshLibrary" uid="uid://cbrhuh7irydiw" path="res://assets/mesh/vallas.tres" id="12_y7oo3"]
 [ext_resource type="PackedScene" uid="uid://b10i5yfnwxo46" path="res://escenas/Follaje/Pine.tscn" id="13_be3de"]
 [ext_resource type="Texture2D" uid="uid://c6v8ihk22n5ff" path="res://assets/modelos/grass/kisspng-texture-mapping-drawing-lawn-tall-grass-texture-alpha-5ab1d0d27d3617.9249521415216027705129.png" id="13_hoxwq"]
 [ext_resource type="PackedScene" uid="uid://yjbrnwkvmapo" path="res://escenas/Props/CasaSpawn.tscn" id="14_6lpki"]
@@ -35,6 +35,7 @@
 sky_top_color = Color(0, 0, 0.0352941, 1)
 sky_horizon_color = Color(0, 0, 0.227451, 1)
 sky_cover = ExtResource("1_jqsoc")
+sun_angle_max = 0.0
 
 [sub_resource type="Sky" id="Sky_1aaxu"]
 sky_material = SubResource("ProceduralSkyMaterial_lqpnx")
@@ -42,8 +43,9 @@ sky_material = SubResource("ProceduralSkyMaterial_lqpnx")
 [sub_resource type="Environment" id="Environment_rpl2d"]
 background_mode = 2
 sky = SubResource("Sky_1aaxu")
+fog_light_color = Color(0.286275, 0.313726, 0.352941, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bk7h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_617nj"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_757cx")
@@ -78,7 +80,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_0bk7h"),
+"material": SubResource("ShaderMaterial_617nj"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -783,7 +785,8 @@ transform = Transform3D(0.0102955, 0, 0.000244949, 0, 0.0106814, 0, -0.000162094
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6507, 0, 6.1943)
 floor_max_angle = 0.645772
 floor_snap_length = 0.01
-player_plath = NodePath("../../Player")
+markers_group = "FirstEnemy"
+player_path = NodePath("../../Player")
 
 [node name="Marker3D" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3173, 0, 22.8458)
