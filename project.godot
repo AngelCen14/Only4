@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Only4"
-run/main_scene="res://escenas/main.tscn"
+run/main_scene="res://escenas/UI/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg", "res://
 folder_colors={
 "res://escenas/Follaje/": "green",
 "res://escenas/Props/": "yellow",
+"res://escenas/UI/": "orange",
 "res://escenas/Vallas/": "red"
 }
 
