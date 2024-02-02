@@ -8,6 +8,7 @@ var markers = []
 var current_marker_index = 0
 var state_machine
 var player = null
+var player_detected: bool = false
 
 @export var markers_group : String
 @export var player_path : NodePath
@@ -25,24 +26,29 @@ func _process(delta):
 
 	match state_machine.get_current_node():
 		"Andar":
-			# Moverse hacia el marcador actual
-			nav_agent.set_target_position(markers[current_marker_index].global_transform.origin)
-			var next_nav_point = nav_agent.get_next_path_position()
-			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+			
+			if !player_detected :
+				# Moverse hacia el marcador actual
+				nav_agent.set_target_position(markers[current_marker_index].global_transform.origin)
+				var next_nav_point = nav_agent.get_next_path_position()
+				velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 
-			# Mirar hacia la posición del marcador actual
-			#look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
-			interpolate_rotation(markers[current_marker_index].global_transform.origin, delta)
+				# Mirar hacia la posición del marcador actual
+				#look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
+				interpolate_rotation(next_nav_point, delta)
+			else :
+				#Movimiento del bicho, sigue al "target" que es el player
+				nav_agent.set_target_position(player.global_transform.origin)
+				var next_nav_point = nav_agent.get_next_path_position()
+				velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+				look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
 			
 			# Verificar si ha llegado al marcador actual
 			if global_position.distance_to(markers[current_marker_index].global_transform.origin) < 1.0:
 				# Cambiar al siguiente marcador
 				current_marker_index = (current_marker_index + 1) % markers.size()
 				
-			#Movimiento del bicho, sigue al "target" que es el player
-			#nav_agent.set_target_position(player.global_transform.origin)
-			#var next_nav_point = nav_agent.get_next_path_position()
-			#velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+			
 
 		"Atacar":
 			# Mirar hacia la posición del jugador
@@ -65,3 +71,14 @@ func interpolate_rotation(target_position, delta):
 	
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < RANGO_ATAQUE
+
+# Funciones para del area de vision 
+func on_enter(other: Node3D) -> void:
+	if other == player:
+		print("player enter")
+		player_detected = true
+
+func on_exit(other: Node3D) -> void:
+	if other == player:
+		print("player exit")
+		player_detected = false

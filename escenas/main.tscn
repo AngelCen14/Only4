@@ -45,7 +45,7 @@ background_mode = 2
 sky = SubResource("Sky_1aaxu")
 fog_light_color = Color(0.286275, 0.313726, 0.352941, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gkuc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2d36"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_757cx")
@@ -80,7 +80,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_5gkuc"),
+"material": SubResource("ShaderMaterial_d2d36"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -111,9 +111,6 @@ environment = SubResource("Environment_rpl2d")
 
 [node name="Player" parent="." instance=ExtResource("6_bu24w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02625, 0, 15.4739)
-floor_constant_speed = true
-floor_block_on_wall = false
-floor_snap_length = 0.0
 
 [node name="Luna" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.205033, -0.838737, 0.504462, -0.00185898, 0.515077, 0.857142, -0.978753, -0.17668, 0.104048, -293.284, 413.089, 344.409)
@@ -795,4 +792,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3173, 0, 22.8458)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.857, 0, 11.3097)
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1424, 9.53674e-07, 17.0248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91334, 9.53674e-07, 32.886)
