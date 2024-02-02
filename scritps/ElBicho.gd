@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 const SPEED = 1.8
 const RANGO_ATAQUE = 2
+const VELOCIDAD_ROTACION = 2.0
 
 var markers = []
 var current_marker_index = 0
@@ -30,8 +31,9 @@ func _process(delta):
 			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 
 			# Mirar hacia la posición del marcador actual
-			look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
-
+			#look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
+			interpolate_rotation(markers[current_marker_index].global_transform.origin, delta)
+			
 			# Verificar si ha llegado al marcador actual
 			if global_position.distance_to(markers[current_marker_index].global_transform.origin) < 1.0:
 				# Cambiar al siguiente marcador
@@ -52,5 +54,14 @@ func _process(delta):
 
 	move_and_slide()
 
+func interpolate_rotation(target_position, delta):
+	var target_rotation = (target_position - global_transform.origin).normalized()
+	var new_transform = global_transform
+	new_transform.basis = new_transform.basis.slerp(Basis().looking_at(target_rotation, Vector3.UP), VELOCIDAD_ROTACION * delta)
+	new_transform.origin = global_transform.origin  # Preserve the current position
+	global_transform = new_transform
+
+
+	
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < RANGO_ATAQUE
