@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://cf5oq6fgq13a8"]
+[gd_scene load_steps=36 format=3 uid="uid://cf5oq6fgq13a8"]
 
+[ext_resource type="Script" path="res://scritps/fondo_menu.gd" id="1_0t7bi"]
 [ext_resource type="Texture2D" uid="uid://biheroopeknd2" path="res://assets/Texturas/skybox_of_constellations_0.jpg" id="1_1tj3r"]
 [ext_resource type="Texture2D" uid="uid://bv3x8ayjonhpg" path="res://assets/Texturas/moon.png" id="3_i4o7s"]
 [ext_resource type="Shader" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="4_h0sq7"]
@@ -23,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://c6mwksjvem0r6" path="res://escenas/Follaje/arbol_fondo.tscn" id="22_1ymea"]
 [ext_resource type="PackedScene" uid="uid://cdxc1hyu7ifle" path="res://escenas/Props/casa1.tscn" id="23_scv7m"]
 [ext_resource type="PackedScene" uid="uid://2euivu4ba2cm" path="res://escenas/Props/rock.tscn" id="24_l1gr7"]
+[ext_resource type="PackedScene" uid="uid://dknyt8xcbf76h" path="res://assets/modelos/ElBicho/bicho_animado.glb" id="27_cksuy"]
 [ext_resource type="PackedScene" uid="uid://c7iaapvy83ey" path="res://escenas/Props/group_box.tscn" id="27_nsmbn"]
 [ext_resource type="PackedScene" uid="uid://dhpohx0bt17o8" path="res://escenas/Props/cementerio.tscn" id="29_oafv8"]
 
@@ -38,15 +40,20 @@ sky_material = SubResource("ProceduralSkyMaterial_lqpnx")
 
 [sub_resource type="Environment" id="Environment_rpl2d"]
 background_mode = 2
+background_energy_multiplier = 1.16
 sky = SubResource("Sky_1aaxu")
+tonemap_mode = 1
+tonemap_exposure = 0.3
+ssao_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.5
 fog_density = 0.05
 fog_height = 2.0
 fog_height_density = 0.7
-volumetric_fog_density = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1131
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmra4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itj6q"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_h0sq7")
@@ -81,7 +88,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_tmra4"),
+"material": SubResource("ShaderMaterial_itj6q"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -99,14 +106,23 @@ script = ExtResource("9_j7ov8")
 mode = 0
 textures = [[ExtResource("10_4ymm5"), ExtResource("11_4gvsq"), ExtResource("12_160su"), ExtResource("13_jrc7u")], [null, ExtResource("14_1bgxg"), ExtResource("15_gi8b6"), null]]
 
+[sub_resource type="Curve3D" id="Curve3D_jyndu"]
+_data = {
+"points": PackedVector3Array(-3.13288, 0.116902, -4.53946, 3.13288, -0.116902, 4.53946, -10.0194, 1.20514, 7.82621, -2.99921, 0.348067, -4.06417, 2.99921, -0.348067, 4.06417, -0.405518, 1.14221, 20.9512, 3.23159, 0.0160515, 4.79496, -3.23159, -0.0160515, -4.79496, 4.85643, 1.04994, 15.9426, 1.81996, -0.047765, 2.35783, -1.81996, 0.047765, -2.35783, -4.475, 1, 2.9, -3.13288, 0.116902, -4.53946, 3.13288, -0.116902, 4.53946, -10.0194, 1.20514, 7.82621),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="FondoMenu" type="Node"]
+script = ExtResource("1_0t7bi")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rpl2d")
 
 [node name="Luna" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.205033, -0.838737, 0.504462, -0.00185898, 0.515077, 0.857142, -0.978753, -0.17668, 0.104048, -293.284, 413.089, 344.409)
-light_energy = 0.1
+light_energy = 0.2
+shadow_enabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Luna"]
 transform = Transform3D(5.65427, 2.95848, 8.34352, 6.7411, -4.61145, -5.16231, 1.91441, 7.50013, -6.46522, 0, 0, 0)
@@ -427,5 +443,29 @@ shader_params/u_instance_scale = null
 shader_params/u_roughness = null
 metadata/_editor_icon = ExtResource("18_cdulh")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.958621, 0, 0.284685, 0, 1, 0, -0.284685, 0, 0.958621, -25.7355, 2.78646, 42.682)
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(0.777508, 0, -0.628873, 0, 1, 0, 0.628873, 0, 0.777508, -50.8733, 0.0448859, -7.40188)
+curve = SubResource("Curve3D_jyndu")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.801463, -0.00997433, -0.597955, -0.00593261, 0.99994, -0.00872806, 0.598009, -0.00344779, -0.801478, -4.15306, 1.2815, 15.923)
+progress = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(0.173649, -0.204754, -0.96329, 0, 0.978152, -0.207912, 0.98481, 0.0361037, 0.169854, 0, 0, 0)
+fov = 80.0
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(0.371206, -0.928551, 0, 0.928551, 0.371206, 0, 0, 0, 1, -70.119, 0.0764334, 5.2084)
+size = Vector3(3.39465, 7.30765, 10.4163)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -72.413, 4.92255, 5.39898)
+light_color = Color(1, 0, 0, 1)
+light_energy = 8.919
+light_volumetric_fog_energy = 2.616
+spot_range = 6.12672
+spot_angle = 57.4351
+
+[node name="bicho_animado" parent="." instance=ExtResource("27_cksuy")]
+transform = Transform3D(0.0373846, 0, 0.68762, 0, 0.688635, 0, -0.68762, 0, 0.0373846, -72.76, 1.03172, 3.18194)
