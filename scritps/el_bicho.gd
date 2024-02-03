@@ -55,30 +55,34 @@ func _process(delta):
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 
 	# Condiciones
-	anim_tree.set("parameters/conditions/atacar", _target_in_range())
-	anim_tree.set("parameters/conditions/andar", !_target_in_range())
+	anim_tree.set("parameters/conditions/atacar", _target_in_range(RANGO_ATAQUE))
+	anim_tree.set("parameters/conditions/andar", !_target_in_range(RANGO_ATAQUE))
 
 	move_and_slide()
 
-func interpolate_rotation(target_position, delta):
+func interpolate_rotation(target_position, delta):#rota la direccion de forma fluida
 	var target_rotation = (target_position - global_transform.origin).normalized()
 	var new_transform = global_transform
 	new_transform.basis = new_transform.basis.slerp(Basis().looking_at(target_rotation, Vector3.UP), VELOCIDAD_ROTACION * delta)
 	new_transform.origin = global_transform.origin  # Preserve the current position
 	global_transform = new_transform
 
+func _target_in_range(rango):# Devuelve bool si está en rango
+	return global_position.distance_to(player.global_position) < rango
 
-	
-func _target_in_range():
-	return global_position.distance_to(player.global_position) < RANGO_ATAQUE
-
-# Funciones para del area de vision 
+# Funciones del area de vision 
 func on_enter(other: Node3D) -> void:
 	if other == player:
 		print("player enter")
 		player_detected = true
 
 func on_exit(other: Node3D) -> void:
+	if other == player:
+		print("player exit")
+		player_detected = false
+
+
+func _on_casa_1_body_entered(other: Node3D) -> void:
 	if other == player:
 		print("player exit")
 		player_detected = false

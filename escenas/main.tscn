@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b10kttwq2fjp"]
+[gd_scene load_steps=41 format=3 uid="uid://b10kttwq2fjp"]
 
 [ext_resource type="Texture2D" uid="uid://biheroopeknd2" path="res://assets/Texturas/skybox_of_constellations_0.jpg" id="1_jqsoc"]
 [ext_resource type="Texture2D" uid="uid://bv3x8ayjonhpg" path="res://assets/Texturas/moon.png" id="2_pgh17"]
@@ -45,7 +45,7 @@ background_mode = 2
 sky = SubResource("Sky_1aaxu")
 fog_light_color = Color(0.286275, 0.313726, 0.352941, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2d36"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fimod"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_757cx")
@@ -80,7 +80,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_d2d36"),
+"material": SubResource("ShaderMaterial_fimod"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -103,6 +103,9 @@ mode = 0
 textures = [[ExtResource("9_b6q8g"), ExtResource("7_c7clj"), ExtResource("11_810pu"), ExtResource("12_4kago")], [null, ExtResource("10_q5ktm"), ExtResource("14_mgy5r"), null]]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_krf80"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_orfyp"]
+size = Vector3(8.17364, 3.96631, 5.41939)
 
 [node name="Main" type="Node"]
 
@@ -776,6 +779,29 @@ transform = Transform3D(0.0102941, 0, -0.000353558, 0, 0.0106814, 0, 0.000233965
 [node name="Cementerio4" parent="Terreno/NavigationRegion3D/Props/Cementerios" instance=ExtResource("17_6kjsn")]
 transform = Transform3D(0.0102955, 0, 0.000244949, 0, 0.0106814, 0, -0.000162094, 0, 0.0155581, 1.43428, -0.176664, -19.9363)
 
+[node name="Casas" type="Node" parent="Terreno"]
+
+[node name="Casa1" type="Area3D" parent="Terreno/Casas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.83351, 0, 7.90481)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno/Casas/Casa1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46874, 1.48315, 0.400373)
+shape = SubResource("BoxShape3D_orfyp")
+
+[node name="Casa2" type="Area3D" parent="Terreno/Casas"]
+transform = Transform3D(-0.0021118, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.0021118, -26.0903, 2.38419e-07, -46.545)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno/Casas/Casa2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46874, 1.48315, 0.400373)
+shape = SubResource("BoxShape3D_orfyp")
+
+[node name="Casa3" type="Area3D" parent="Terreno/Casas"]
+transform = Transform3D(0.99961, 0, 0.0279216, 0, 1, 0, -0.0279216, 0, 0.99961, 40.223, 2.38419e-07, -34.1885)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno/Casas/Casa3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46874, 1.48315, 0.400373)
+shape = SubResource("BoxShape3D_orfyp")
+
 [node name="EnemyEnvironment" type="Node" parent="."]
 
 [node name="bicho_animado" parent="EnemyEnvironment" instance=ExtResource("30_qhh5h")]
@@ -793,3 +819,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.857, 0, 11.3097)
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91334, 9.53674e-07, 32.886)
+
+[connection signal="body_entered" from="Terreno/Casas/Casa1" to="EnemyEnvironment/bicho_animado" method="_on_casa_1_body_entered"]
+[connection signal="body_entered" from="Terreno/Casas/Casa2" to="EnemyEnvironment/bicho_animado" method="_on_casa_1_body_entered"]
+[connection signal="body_entered" from="Terreno/Casas/Casa3" to="EnemyEnvironment/bicho_animado" method="_on_casa_1_body_entered"]
