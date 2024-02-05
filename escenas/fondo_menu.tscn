@@ -51,9 +51,9 @@ fog_density = 0.05
 fog_height = 2.0
 fog_height_density = 0.7
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.1131
+volumetric_fog_density = 0.2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_itj6q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mk5f"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_h0sq7")
@@ -88,7 +88,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_itj6q"),
+"material": SubResource("ShaderMaterial_0mk5f"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -121,7 +121,7 @@ environment = SubResource("Environment_rpl2d")
 
 [node name="Luna" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.205033, -0.838737, 0.504462, -0.00185898, 0.515077, 0.857142, -0.978753, -0.17668, 0.104048, -293.284, 413.089, 344.409)
-light_energy = 0.2
+light_energy = 0.03
 shadow_enabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Luna"]
@@ -448,7 +448,7 @@ transform = Transform3D(0.777508, 0, -0.628873, 0, 1, 0, 0.628873, 0, 0.777508, 
 curve = SubResource("Curve3D_jyndu")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.801463, -0.00997433, -0.597955, -0.00593261, 0.99994, -0.00872806, 0.598009, -0.00344779, -0.801478, -4.15306, 1.2815, 15.923)
+transform = Transform3D(-0.801463, -0.00997434, -0.597955, -0.00593261, 0.99994, -0.00872805, 0.598008, -0.00344779, -0.801478, -4.15306, 1.2815, 15.923)
 progress = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]

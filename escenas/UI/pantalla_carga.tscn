@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvo3qnynie16n"]
+
+[ext_resource type="Script" path="res://scritps/pantalla_carga.gd" id="1_jet3o"]
+[ext_resource type="Shader" path="res://shaders/texto_pantalla_carga.gdshader" id="2_m3wob"]
+[ext_resource type="FontFile" uid="uid://c8ddkauss0itg" path="res://assets/fuentes/Ghastly Panic.ttf" id="3_i4q8n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dj7ld"]
+shader = ExtResource("2_m3wob")
+shader_parameter/altura = 15.0
+shader_parameter/velocidad = 5.0
+shader_parameter/frecuencia = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2o6uy"]
+font = ExtResource("3_i4q8n")
+font_size = 200
+
+[node name="PantallaCarga" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jet3o")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LabelCargando" type="Label" parent="."]
+material = SubResource("ShaderMaterial_dj7ld")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -92.0
+offset_right = 215.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "CARGANDO"
+label_settings = SubResource("LabelSettings_2o6uy")
+vertical_alignment = 1
