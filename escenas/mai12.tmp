@@ -46,7 +46,7 @@ sky = SubResource("Sky_1aaxu")
 fog_light_color = Color(0.286275, 0.313726, 0.352941, 1)
 volumetric_fog_density = 0.1046
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tinbn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds40v"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_757cx")
@@ -81,7 +81,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_tinbn"),
+"material": SubResource("ShaderMaterial_ds40v"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -813,13 +813,13 @@ markers_group = "FirstEnemy"
 player_path = NodePath("../../Player")
 
 [node name="Marker3D" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0215, 0, 21.2551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3173, 0, 22.8458)
 
 [node name="Marker3D2" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.857, 0, 11.3097)
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyEnvironment" groups=["FirstEnemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8966, 2.86102e-06, 14.8516)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91334, 9.53674e-07, 32.886)
 
 [connection signal="body_entered" from="Terreno/Casas/Casa1" to="EnemyEnvironment/bicho_animado" method="_on_casa_1_body_entered"]
 [connection signal="body_entered" from="Terreno/Casas/Casa2" to="EnemyEnvironment/bicho_animado" method="_on_casa_1_body_entered"]

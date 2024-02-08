@@ -16,21 +16,36 @@ var tiempo_agitamiento  = 0.0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		cabeza_jugador.rotate_y(-event.relative.x * SENSIBILIDAD)
-		camara.rotate_x(-event.relative.y * SENSIBILIDAD)
-		camara.rotation.x = clamp(camara.rotation.x, deg_to_rad(-60), deg_to_rad(60))
-
 func _physics_process(delta):
 	gravedad(delta)
-	movimiento(delta)
 	control_linterna()
-	
+	movimiento(delta)
+	press_esc(delta)
+
+
+func _unhandled_input(event):
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			cabeza_jugador.rotate_y(-event.relative.x * SENSIBILIDAD)
+			camara.rotate_x(-event.relative.y * SENSIBILIDAD)
+			camara.rotation.x = clamp(camara.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+
+
+func press_esc(delta):
+	# Verificamos si se ha pulsado la tecla Esc
+	if Input.is_action_just_pressed("esc"):
+		# Cambiamos el modo del ratón entre capturado y liberado
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
 func gravedad(delta):
 	# Manejar la gravedad :)
 	if not is_on_floor():
 		velocity.y -= GRAVEDAD * delta
+
 
 func movimiento(delta):
 	# MOVIMIENTO DEL PERSONAJE
@@ -43,19 +58,21 @@ func movimiento(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, VELOCIDAD)
 		velocity.z = move_toward(velocity.z, 0, VELOCIDAD)
-
+	
 	move_and_slide()
 	
 	# AGITAMIENTO DE LA CAMARA PARA SIMULAR LOS PASOS DEL PERSONAJE
 	tiempo_agitamiento += delta * velocity.length()
 	camara.transform.origin = agitamiento_camara(tiempo_agitamiento)
-	
+
+
 func agitamiento_camara(tiempo) -> Vector3:
 	var posicion = Vector3.ZERO
 	posicion.y = sin(tiempo * FRECUENCIA_AGITAMENTO) * AMPLITUD_AGITAMIENTO
 	posicion.x = cos(tiempo * FRECUENCIA_AGITAMENTO / 2) * AMPLITUD_AGITAMIENTO
 	return posicion
-	
+
+
 func control_linterna():
 	if Input.is_action_just_pressed("linterna") :
 		luz_linterna.visible = !luz_linterna.visible
