@@ -52,7 +52,7 @@ fog_height_density = 0.7
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5uq7v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_778kr"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_h0sq7")
@@ -87,7 +87,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_5uq7v"),
+"material": SubResource("ShaderMaterial_778kr"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,

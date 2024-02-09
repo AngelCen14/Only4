@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhr2pvsvafcdt"]
+[gd_scene load_steps=6 format=3 uid="uid://dhr2pvsvafcdt"]
 
 [ext_resource type="FontFile" uid="uid://do4otdmiy5buj" path="res://assets/fuentes/HorrorFont-Regular.ttf" id="1_1xaug"]
 [ext_resource type="Script" path="res://scritps/menu_ajustes.gd" id="1_07qil"]
+[ext_resource type="PackedScene" uid="uid://bmtjnku1atpog" path="res://escenas/UI/tab_container_ajustes.tscn" id="3_6bb8c"]
+[ext_resource type="Script" path="res://scritps/animacion_boton.gd" id="5_yt78e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mlxkl"]
 font = ExtResource("1_1xaug")
-font_size = 42
+font_size = 48
 font_color = Color(0.45098, 0.027451, 0.0666667, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -36,7 +38,7 @@ theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = -48
+theme_override_constants/separation = -32
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,9 +47,15 @@ label_settings = SubResource("LabelSettings_mlxkl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TabContainerAjustes" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_6bb8c")]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="botonSalir" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
 text = "SALIR"
+script = ExtResource("5_yt78e")

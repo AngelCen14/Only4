@@ -13,7 +13,6 @@ extends Control
 
 func _ready():
 	conectar_signals()
-	boton_jugar.grab_focus() 
 
 func conectar_signals():
 	boton_jugar.pressed.connect(on_boton_jugar_pressed)
@@ -24,7 +23,7 @@ func conectar_signals():
 # --- EVENTOS BOTONES ---
 func on_boton_jugar_pressed():
 	print("CARGAR JUEGO")
-	GLOBAL.cargar_escena = GLOBAL.MAIN
+	GLOBAL.cargar_escena = GLOBAL.ESCENA_MAIN
 	get_tree().change_scene_to_file(GLOBAL.ESCENA_PANTALLA_CARGA)
 
 func on_boton_ajustes_pressed():

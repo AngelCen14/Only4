@@ -9,14 +9,14 @@ extends Control
 var contador: int = 0
 
 func _ready():
-	ResourceLoader.load_threaded_request(GLOBAL.cambio_escena)
+	ResourceLoader.load_threaded_request(GLOBAL.cargar_escena)
 	iniciar_timer(timer, 0.3)
 	
 func _process(delta):
-	estado_carga_escena = ResourceLoader.load_threaded_get_status(GLOBAL.cambio_escena, progreso)
+	estado_carga_escena = ResourceLoader.load_threaded_get_status(GLOBAL.cargar_escena, progreso)
 	
 	if estado_carga_escena == ResourceLoader.THREAD_LOAD_LOADED:
-		get_tree().call_deferred("change_scene_to_packed", ResourceLoader.load_threaded_get(GLOBAL.cambio_escena))
+		get_tree().call_deferred("change_scene_to_packed", ResourceLoader.load_threaded_get(GLOBAL.cargar_escena))
 	
 func iniciar_timer(timer: Timer, tiempo: float):
 	timer.wait_time = tiempo

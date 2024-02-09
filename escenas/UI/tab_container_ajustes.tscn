@@ -1,0 +1,175 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmtjnku1atpog"]
+
+[ext_resource type="Theme" uid="uid://d1b77oehunhga" path="res://assets/temas_interfaz/ui_theme.tres" id="1_y8qf5"]
+[ext_resource type="LabelSettings" uid="uid://dvjd658ifem83" path="res://assets/temas_interfaz/label_settings/opciones_menu_ajustes_label_settings.tres" id="2_plcio"]
+
+[node name="TabContainerAjustes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y8qf5")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Graficos" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graficos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Graficos/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graficos/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="TabContainer/Graficos/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Opcion GRAFICOS 1"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label2" type="Label" parent="TabContainer/Graficos/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Opcion GRAFICOS 2"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label3" type="Label" parent="TabContainer/Graficos/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Opcion GRAFICOS 3"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label4" type="Label" parent="TabContainer/Graficos/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Opcion GRAFICOS 4
+"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label5" type="Label" parent="TabContainer/Graficos/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Opcion GRAFICOS 5"
+label_settings = ExtResource("2_plcio")
+
+[node name="Sonido" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sonido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sonido/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sonido/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Sonido 1"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label2" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Sonido 2"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label3" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Sonido 3"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label4" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Sonido 4"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label5" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Sonido 5"
+label_settings = ExtResource("2_plcio")
+
+[node name="Controles" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Controles/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controles/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="TabContainer/Controles/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Controles 1"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label2" type="Label" parent="TabContainer/Controles/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Controles 2"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label3" type="Label" parent="TabContainer/Controles/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Controles 3"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label4" type="Label" parent="TabContainer/Controles/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Controles 4"
+label_settings = ExtResource("2_plcio")
+
+[node name="Label5" type="Label" parent="TabContainer/Controles/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opcion Controles 5"
+label_settings = ExtResource("2_plcio")

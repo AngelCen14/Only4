@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dvjd658ifem83"]
+
+[ext_resource type="FontFile" uid="uid://djh3b3jbt0e3y" path="res://assets/fuentes/horroroid.ttf" id="1_yrc3r"]
+
+[resource]
+font = ExtResource("1_yrc3r")
+font_size = 52
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 14
+shadow_color = Color(0.45098, 0.027451, 0.0666667, 0.784314)
