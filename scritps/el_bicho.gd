@@ -28,12 +28,14 @@ func _ready():
 	state_machine = anim_tree.get("parameters/playback")
 	player = get_node(player_path)
 	$Timer.start(3)
+	
 
 
 func _process(delta):
 	velocity = Vector3.ZERO
 	match state_machine.get_current_node():
 		"Idle":
+			print("idle")
 			if player_detected:
 				var tar = Vector3(player.global_position.x, global_position.y, player.global_position.z)
 				interpolate_rotation(tar,delta)
@@ -41,9 +43,11 @@ func _process(delta):
 				buscar()
 			#print("idle")
 		"Andar":
+			print("andar")
 			move_to_marker(delta)
-		"Run":
-			pass
+		"Correr":
+			print("run")
+			move_to_player()
 		"Atacar":
 			#print("atacar")
 			# Mirar hacia la posición del jugador
@@ -57,39 +61,35 @@ func _process(delta):
 	
 
 func _on_timer_timeout():
-	#timerCont+=1
+	timerCont+=1
 	numrand = randi_range(1,3)
 	#print(numrand)
+	gritoUsado=false
 	#iaBool = !iaBool
 	
 func AI_MAIN(delta):
-	if timerCont<5:
+	if timerCont<10:
 		if player_detected:
-			print("detectado")
 			anim_tree.set("parameters/conditions/idle", true)
 			anim_tree.set("parameters/conditions/andar", false)
-			#grito()
-			
+			if timerCont > 5 && gritoUsado:
+				print("run")
+				anim_tree.set("parameters/conditions/idle", false)
+				anim_tree.set("parameters/conditions/run", true)
+			else:
+				anim_tree.set("parameters/conditions/run", false)
+				gritar()
 		else:
+			anim_tree.set("parameters/conditions/run", false)
 			anim_tree.set("parameters/conditions/idle", false)
 			anim_tree.set("parameters/conditions/andar", true)
-			move_to_marker(delta)
-
-func grito():
-	if !gritoUsado:
-		state_machine.travel("parameters/conditions/grito",true)
-		gritoUsado=true
 
 func gritar():
-	#print(iaBool)
-	anim_tree.set("parameters/conditions/idle", true)
-	anim_tree.set("parameters/conditions/andar", false)
-	if iaBool:
-		anim_tree.set("parameters/conditions/grito", true)
-	else :
-		anim_tree.set("parameters/conditions/grito", false)
-	await get_tree().create_timer(2.0).timeout
-	iaBool=false
+	if !gritoUsado:
+		anim_tree.set("parameters/conditions/grito",!gritoUsado)
+		await get_tree().create_timer(2.0).timeout
+		anim_tree.set("parameters/conditions/grito",false)
+		gritoUsado=true
 
 
 func buscar():# Posicion random
@@ -117,11 +117,11 @@ func move_to_marker(delta):
 		# Cambiar al siguiente marcador
 		current_marker_index = (current_marker_index + 1) % markers.size()
 
-func move_to_player(speed):
+func move_to_player():
 	#Movimiento del bicho, sigue al "target" que es el player
 	nav_agent.set_target_position(player.global_transform.origin)
 	var next_nav_point = nav_agent.get_next_path_position()
-	velocity = (next_nav_point - global_transform.origin).normalized() * speed
+	velocity = (next_nav_point - global_transform.origin).normalized() * RUN_SPEED
 	look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
 
 # Funciones del area de vision 
