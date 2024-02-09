@@ -12,7 +12,10 @@ var player = null
 var player_detected: bool = false
 var timerCont=0
 var numrand=0
+var cont=0
 var iaBool:bool=true
+var gritoUsado:bool=false
+
 
 @export var markers_group : String
 @export var player_path : NodePath
@@ -26,9 +29,9 @@ func _ready():
 	player = get_node(player_path)
 	$Timer.start(3)
 
+
 func _process(delta):
 	velocity = Vector3.ZERO
-	
 	match state_machine.get_current_node():
 		"Idle":
 			if player_detected:
@@ -36,47 +39,57 @@ func _process(delta):
 				interpolate_rotation(tar,delta)
 			else :
 				buscar()
-			print("idle")
+			#print("idle")
 		"Andar":
 			move_to_marker(delta)
+		"Run":
+			pass
 		"Atacar":
 			#print("atacar")
 			# Mirar hacia la posición del jugador
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 			
-	anim_tree.set("parameters/conditions/atacar", _target_in_range(RANGO_ATAQUE))
+	anim_tree.set("parameters/conditions/atacar", _target_in_range(RANGO_ATAQUE))	
 	
 	AI_MAIN(delta)
 	
 	move_and_slide()
-
+	
 
 func _on_timer_timeout():
-	timerCont+=1
+	#timerCont+=1
 	numrand = randi_range(1,3)
-	print(numrand)
+	#print(numrand)
 	#iaBool = !iaBool
-
-
+	
 func AI_MAIN(delta):
 	if timerCont<5:
 		if player_detected:
 			print("detectado")
-			anim_tree.set("parameters/conditions/andar", false)
 			anim_tree.set("parameters/conditions/idle", true)
-			if iaBool:
-				print("grito")
-				anim_tree.set("parameters/conditions/grito", true)
-				iaBool=false
-			else :
-				print("no grito")
-				anim_tree.set("parameters/conditions/grito", false)
+			anim_tree.set("parameters/conditions/andar", false)
+			#grito()
 			
 		else:
 			anim_tree.set("parameters/conditions/idle", false)
-			anim_tree.set("parameters/conditions/grito", false)
 			anim_tree.set("parameters/conditions/andar", true)
 			move_to_marker(delta)
+
+func grito():
+	if !gritoUsado:
+		state_machine.travel("parameters/conditions/grito",true)
+		gritoUsado=true
+
+func gritar():
+	#print(iaBool)
+	anim_tree.set("parameters/conditions/idle", true)
+	anim_tree.set("parameters/conditions/andar", false)
+	if iaBool:
+		anim_tree.set("parameters/conditions/grito", true)
+	else :
+		anim_tree.set("parameters/conditions/grito", false)
+	await get_tree().create_timer(2.0).timeout
+	iaBool=false
 
 
 func buscar():# Posicion random
