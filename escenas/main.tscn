@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b10kttwq2fjp"]
+[gd_scene load_steps=42 format=3 uid="uid://b10kttwq2fjp"]
 
 [ext_resource type="Texture2D" uid="uid://biheroopeknd2" path="res://assets/Texturas/skybox_of_constellations_0.jpg" id="1_jqsoc"]
 [ext_resource type="Texture2D" uid="uid://bv3x8ayjonhpg" path="res://assets/Texturas/moon.png" id="2_pgh17"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://byic411wmowe6" path="res://escenas/Props/tumba.tscn" id="23_tmkog"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="24_dqm1c"]
 [ext_resource type="Script" path="res://addons/simplegrasstextured/grass.gd" id="25_u5rrd"]
+[ext_resource type="PackedScene" uid="uid://ccc5fx4f6x0wo" path="res://escenas/Props/old_key.tscn" id="30_ktb4p"]
 [ext_resource type="PackedScene" uid="uid://ueshb10cnwql" path="res://escenas/bicho_animado.tscn" id="30_qhh5h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqpnx"]
@@ -46,7 +47,7 @@ sky = SubResource("Sky_1aaxu")
 fog_light_color = Color(0.286275, 0.313726, 0.352941, 1)
 volumetric_fog_density = 0.1046
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qm8en"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmtm4"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_757cx")
@@ -81,7 +82,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_qm8en"),
+"material": SubResource("ShaderMaterial_pmtm4"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -802,6 +803,9 @@ transform = Transform3D(0.99961, 0, 0.0279216, 0, 1, 0, -0.0279216, 0, 0.99961, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno/Casas/Casa3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46874, 1.48315, 0.400373)
 shape = SubResource("BoxShape3D_orfyp")
+
+[node name="key" parent="Terreno" instance=ExtResource("30_ktb4p")]
+transform = Transform3D(3.56528, 0, 0, 0, 4.52853, -0.00454749, 0, 0.0048213, 4.27134, 3.6555, 2.66227e-07, 26.9726)
 
 [node name="EnemyEnvironment" type="Node" parent="."]
 

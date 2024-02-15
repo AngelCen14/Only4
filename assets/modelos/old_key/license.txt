@@ -1,0 +1,11 @@
+Model Information:
+* title:	Old Key
+* source:	https://sketchfab.com/3d-models/old-key-d846b203f4754ee3825e8c4c76d21b21
+* author:	TheFalkonett (https://sketchfab.com/TheFalkonett)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Old Key" (https://sketchfab.com/3d-models/old-key-d846b203f4754ee3825e8c4c76d21b21) by TheFalkonett (https://sketchfab.com/TheFalkonett) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

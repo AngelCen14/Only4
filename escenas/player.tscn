@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://did18edoe6ixo"]
+[gd_scene load_steps=6 format=3 uid="uid://did18edoe6ixo"]
 
 [ext_resource type="Script" path="res://scritps/player.gd" id="1_5egno"]
 [ext_resource type="PackedScene" uid="uid://dyqxjo7yitnux" path="res://assets/modelos/linterna/scene.gltf" id="2_5st1b"]
+[ext_resource type="Script" path="res://scritps/interactRay.gd" id="3_6x6tl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rlj3v"]
 
@@ -34,3 +35,27 @@ light_volumetric_fog_energy = 0.01
 shadow_enabled = true
 spot_range = 46.9347
 spot_angle = 32.2453
+
+[node name="InteractRay" type="RayCast3D" parent="Cabeza/Camera3D"]
+target_position = Vector3(0, 0, -4)
+script = ExtResource("3_6x6tl")
+
+[node name="Label" type="Label" parent="Cabeza/Camera3D/InteractRay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 10.0
+offset_right = 42.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 13
+text = "Presiona [E]"
+horizontal_alignment = 1
+autowrap_mode = 1
+clip_text = true

@@ -52,10 +52,10 @@ func _process(delta):
 			#print("atacar")
 			# Mirar hacia la posición del jugador
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-			
+	
 	anim_tree.set("parameters/conditions/atacar", _target_in_range(RANGO_ATAQUE))	
 	
-	AI_MAIN(delta)
+	#AI_MAIN(delta)
 	
 	move_and_slide()
 	
