@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dhr2pvsvafcdt"]
 
 [ext_resource type="FontFile" uid="uid://do4otdmiy5buj" path="res://assets/fuentes/HorrorFont-Regular.ttf" id="1_1xaug"]
-[ext_resource type="Script" path="res://scritps/menu_ajustes.gd" id="1_07qil"]
+[ext_resource type="Script" path="res://scritps/ui_scripts/menu_ajustes.gd" id="1_07qil"]
 [ext_resource type="PackedScene" uid="uid://bmtjnku1atpog" path="res://escenas/UI/tab_container_ajustes.tscn" id="3_6bb8c"]
-[ext_resource type="Script" path="res://scritps/animacion_boton.gd" id="5_yt78e"]
+[ext_resource type="Script" path="res://scritps/ui_scripts/animacion_boton.gd" id="5_yt78e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mlxkl"]
 font = ExtResource("1_1xaug")

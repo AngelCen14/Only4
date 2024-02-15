@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://h2n68hri43t7"]
 
-[ext_resource type="Script" path="res://scritps/menu_principal.gd" id="1_l51ka"]
+[ext_resource type="Script" path="res://scritps/ui_scripts/menu_principal.gd" id="1_l51ka"]
 [ext_resource type="Theme" uid="uid://d1b77oehunhga" path="res://assets/temas_interfaz/ui_theme.tres" id="1_siint"]
 [ext_resource type="PackedScene" uid="uid://cf5oq6fgq13a8" path="res://escenas/fondo_menu.tscn" id="3_h6uwa"]
 [ext_resource type="FontFile" uid="uid://c8ddkauss0itg" path="res://assets/fuentes/Ghastly Panic.ttf" id="3_vcwn2"]
-[ext_resource type="Script" path="res://scritps/animacion_boton.gd" id="4_4t2os"]
+[ext_resource type="Script" path="res://scritps/ui_scripts/animacion_boton.gd" id="4_4t2os"]
 [ext_resource type="PackedScene" uid="uid://dhr2pvsvafcdt" path="res://escenas/UI/menu_ajustes.tscn" id="4_rxft8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lxdsn"]
@@ -37,9 +37,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -99.5
-offset_top = -237.5
+offset_top = -216.5
 offset_right = 99.5
-offset_bottom = 237.5
+offset_bottom = 216.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 100
