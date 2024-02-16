@@ -24,8 +24,6 @@ func _physics_process(delta):
 	control_linterna()
 	movimiento(delta)
 	press_esc(delta)
-	if llaves == 1:
-		get_node("../Terreno/key").visible=false
 
 
 func _unhandled_input(event):
@@ -81,3 +79,10 @@ func agitamiento_camara(tiempo) -> Vector3:
 func control_linterna():
 	if Input.is_action_just_pressed("linterna") :
 		luz_linterna.visible = !luz_linterna.visible
+
+func get_llaves(keyname):
+	if keyname != null:
+		print(keyname)
+		var str: NodePath=keyname
+		get_node(keyname).visible=false
+		get_node(keyname).set_process_mode(4)
