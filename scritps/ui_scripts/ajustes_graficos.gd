@@ -27,6 +27,8 @@ const DICCIONARIO_RESOLUCIONES: Dictionary = {
 func _ready():
 	cargar_modos_ventana()
 	cargar_resoluciones()
+	set_texto_resolucion()
+	
 	option_button_modos_ventana.item_selected.connect(on_seleccionar_modo_ventana)
 	option_button_resoluciones.item_selected.connect(on_seleccionar_resolucion)
 
@@ -52,6 +54,17 @@ func on_seleccionar_modo_ventana(index: int):
 		3: # Pantalla completa sin bordes
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-
+	set_texto_resolucion()
+	
 func on_seleccionar_resolucion(index: int):
-	DisplayServer.window_set_size(DICCIONARIO_RESOLUCIONES.values()[index])
+	get_window().set_size(DICCIONARIO_RESOLUCIONES.values()[index])
+	centrar_ventana()
+	
+func set_texto_resolucion():
+	var texto = str(get_window().get_size().x)+" x "+str(get_window().get_size().y)
+	option_button_resoluciones.set_text(texto)
+	
+func centrar_ventana():
+	var centro_pantalla = DisplayServer.screen_get_position()+DisplayServer.screen_get_size()/2
+	var tamaño_ventana = get_window().get_size_with_decorations()
+	get_window().set_position(centro_pantalla-tamaño_ventana/2)

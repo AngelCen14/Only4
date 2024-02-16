@@ -55,7 +55,7 @@ layout_mode = 2
 theme_override_constants/separation = 160
 
 [node name="Label" type="Label" parent="TabContainer/Graficos/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
 text = "MODO DE LA VENTANA"
 label_settings = ExtResource("2_plcio")
@@ -71,7 +71,7 @@ layout_mode = 2
 theme_override_constants/separation = 160
 
 [node name="Label" type="Label" parent="TabContainer/Graficos/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
 text = "RESOLUCION"
 label_settings = ExtResource("2_plcio")
