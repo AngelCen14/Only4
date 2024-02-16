@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b10kttwq2fjp"]
+[gd_scene load_steps=43 format=3 uid="uid://b10kttwq2fjp"]
 
 [ext_resource type="Texture2D" uid="uid://biheroopeknd2" path="res://assets/Texturas/skybox_of_constellations_0.jpg" id="1_jqsoc"]
 [ext_resource type="Texture2D" uid="uid://bv3x8ayjonhpg" path="res://assets/Texturas/moon.png" id="2_pgh17"]
@@ -47,7 +47,7 @@ sky = SubResource("Sky_1aaxu")
 fog_light_color = Color(0.286275, 0.313726, 0.352941, 1)
 volumetric_fog_density = 0.1046
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmtm4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xj31"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_757cx")
@@ -82,7 +82,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_pmtm4"),
+"material": SubResource("ShaderMaterial_8xj31"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -108,6 +108,9 @@ textures = [[ExtResource("9_b6q8g"), ExtResource("7_c7clj"), ExtResource("11_810
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_orfyp"]
 size = Vector3(8.17364, 3.96631, 5.41939)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nqqj"]
+size = Vector3(0.819824, 2.99402, 3.66644)
 
 [node name="Main" type="Node"]
 
@@ -805,7 +808,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46874, 1.48315, 0.400373)
 shape = SubResource("BoxShape3D_orfyp")
 
 [node name="key" parent="Terreno" instance=ExtResource("30_ktb4p")]
-transform = Transform3D(3.56528, 0, 0, 0, 4.52853, -0.00454749, 0, 0.0048213, 4.27134, 3.6555, 2.66227e-07, 26.9726)
+transform = Transform3D(3.56528, 0, 0, 0, 4.52853, -0.00454749, 0, 0.0048213, 4.27134, 3.91701, 2.66227e-07, 27.3219)
+
+[node name="key2" parent="Terreno" instance=ExtResource("30_ktb4p")]
+transform = Transform3D(3.56528, 0, 0, 0, 4.52853, -0.00454749, 0, 0.0048213, 4.27134, 3.01177, 4.37635e-08, 29.3414)
+
+[node name="Salida" type="StaticBody3D" parent="Terreno"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3834, 0.910355, -11.3967)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terreno/Salida"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35535, 0.830071, 0.107526)
+shape = SubResource("BoxShape3D_2nqqj")
 
 [node name="EnemyEnvironment" type="Node" parent="."]
 

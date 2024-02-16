@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const WALK_SPEED = 1.8
-const RUN_SPEED = 3.6
+const RUN_SPEED = 3.0
 const RANGO_ATAQUE = 2
 const VELOCIDAD_ROTACION = 2
 
@@ -10,12 +10,16 @@ var current_marker_index = 0
 var state_machine
 var player = null
 var player_detected: bool = false
+var lastPlayerPos
 var timerCont=0
 var numrand=0
 var cont=0
 var iaBool:bool=true
 var gritoUsado:bool=false
-
+var andar
+var correr
+var gritar
+var atacar
 
 @export var markers_group : String
 @export var player_path : NodePath
@@ -28,20 +32,19 @@ func _ready():
 	state_machine = anim_tree.get("parameters/playback")
 	player = get_node(player_path)
 	$Timer.start(3)
-	
+	lastPlayerPos = Vector3(player.global_position.z,global_position.y,player.global_position.z)
 
 
 func _process(delta):
+	andar = anim_tree.get("parameters/conditions/andar")
+	correr = anim_tree.get("parameters/conditions/run")
+	gritar = anim_tree.get("parameters/conditions/grito")
+	atacar = anim_tree.get("parameters/conditions/atacar")
 	velocity = Vector3.ZERO
 	match state_machine.get_current_node():
 		"Idle":
-			print("idle")
-			if player_detected:
-				var tar = Vector3(player.global_position.x, global_position.y, player.global_position.z)
-				interpolate_rotation(tar,delta)
-			else :
-				buscar()
 			#print("idle")
+			interpolate_rotation(lastPlayerPos,delta)
 		"Andar":
 			print("andar")
 			move_to_marker(delta)
@@ -53,8 +56,9 @@ func _process(delta):
 			# Mirar hacia la posición del jugador
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	
-	anim_tree.set("parameters/conditions/atacar", _target_in_range(RANGO_ATAQUE))	
+	anim_tree.set("parameters/conditions/atacar", _target_in_range(RANGO_ATAQUE))
 	
+	#set_idle()
 	#AI_MAIN(delta)
 	
 	move_and_slide()
@@ -63,37 +67,35 @@ func _process(delta):
 func _on_timer_timeout():
 	timerCont+=1
 	numrand = randi_range(1,3)
-	#print(numrand)
-	gritoUsado=false
+	print(numrand)
 	#iaBool = !iaBool
-	
-func AI_MAIN(delta):
-	if timerCont<10:
-		if player_detected:
-			anim_tree.set("parameters/conditions/idle", true)
-			anim_tree.set("parameters/conditions/andar", false)
-			if timerCont > 5 && gritoUsado:
-				print("run")
-				anim_tree.set("parameters/conditions/idle", false)
-				anim_tree.set("parameters/conditions/run", true)
-			else:
-				anim_tree.set("parameters/conditions/run", false)
-				gritar()
-		else:
-			anim_tree.set("parameters/conditions/run", false)
-			anim_tree.set("parameters/conditions/idle", false)
-			anim_tree.set("parameters/conditions/andar", true)
 
-func gritar():
+func AI_MAIN(delta):
+	if player_detected:
+		interpolate_rotation(player.global_transform.origin, delta)
+		if !gritar and !atacar:
+			anim_tree.set("parameters/conditions/run",true)
+	else:
+		if numrand<=3:
+			anim_tree.set("parameters/conditions/andar",false)
+			anim_tree.set("parameters/conditions/run",false)
+		else:
+			anim_tree.set("parameters/conditions/andar",true)
+
+func grito():
+	anim_tree.set("parameters/conditions/andar",false)
+	anim_tree.set("parameters/conditions/run",false)
 	if !gritoUsado:
 		anim_tree.set("parameters/conditions/grito",!gritoUsado)
 		await get_tree().create_timer(2.0).timeout
 		anim_tree.set("parameters/conditions/grito",false)
 		gritoUsado=true
 
-
-func buscar():# Posicion random
-	return Vector3(randi_range(-5,5), global_position.y, randi_range(-5,5))
+func set_idle():
+	if !gritar and !andar and !correr and !atacar:
+		anim_tree.set("parameters/conditions/idle", true)
+	else:
+		anim_tree.set("parameters/conditions/idle", false)
 
 func interpolate_rotation(target_position, delta):#rota la direccion de forma fluida
 	var target_rotation = (target_position - global_transform.origin).normalized()
@@ -128,11 +130,18 @@ func move_to_player():
 func on_enter(other: Node3D) -> void:
 	if other == player:
 		player_detected = true
+		grito()
 func on_exit(other: Node3D) -> void:
 	if other == player:
 		player_detected = false
+		lastPlayerPos = Vector3(lastPlayerPos.x+ randi_range(-5,5), global_position.y,lastPlayerPos.z+ randi_range(-5,5))
 
 # Funcion de entrar a las casas
 func _on_casa_1_body_entered(other: Node3D) -> void:
 	if other == player:
 		player_detected = false
+		grito()
+		$AreaVision.monitoring = false
+
+func _on_casa_1_body_exited(other: Node3D) -> void:
+	$AreaVision.monitoring = true

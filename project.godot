@@ -24,7 +24,6 @@ GLOBAL="*res://scritps/autoloads/global.gd"
 
 [display]
 
-window/size/mode=3
 window/vsync/vsync_mode=0
 
 [editor_plugins]
