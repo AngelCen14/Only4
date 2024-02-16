@@ -9,6 +9,8 @@ const FRECUENCIA_AGITAMENTO = 2.0
 const AMPLITUD_AGITAMIENTO = 0.08
 var tiempo_agitamiento  = 0.0
 
+@export var llaves = 0;
+
 @onready var cabeza_jugador = $Cabeza
 @onready var camara = $Cabeza/Camera3D
 @onready var luz_linterna = $Cabeza/Camera3D/Linterna/Luz
@@ -22,6 +24,8 @@ func _physics_process(delta):
 	control_linterna()
 	movimiento(delta)
 	press_esc(delta)
+	if llaves == 1:
+		get_node("../Terreno/key").visible=false
 
 
 func _unhandled_input(event):

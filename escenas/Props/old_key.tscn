@@ -12,10 +12,10 @@ size = Vector3(1.8457, 0.597168, 0.676147)
 [node name="defaultMaterial" parent="Sketchfab_model/Collada visual scene group/Key" index="0"]
 transform = Transform3D(0.853959, -0.511959, -0.0930049, 0.494016, 0.741576, 0.453883, -0.163399, -0.433544, 0.886193, -0.0125721, 0.0182172, -0.00896654)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/Collada visual scene group/Key" index="1"]
+[node name="Key" type="StaticBody3D" parent="Sketchfab_model/Collada visual scene group/Key" index="1"]
 transform = Transform3D(0.987907, 2.98023e-08, -1.49012e-07, -1.19209e-07, 0.987907, 0, 2.38419e-07, -5.96046e-08, 0.987907, 0, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_x6035")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/Collada visual scene group/Key/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/Collada visual scene group/Key/Key" index="0"]
 transform = Transform3D(0.844231, -0.533963, -0.0469604, 0.50088, 0.754675, 0.423852, -0.190877, -0.381364, 0.904515, -0.0887447, 0.17685, -0.0454971)
 shape = SubResource("BoxShape3D_ue0uv")
