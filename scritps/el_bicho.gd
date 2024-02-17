@@ -10,6 +10,7 @@ var current_marker_index = 0
 var state_machine
 var player = null
 var player_detected: bool = false
+var player_visto:bool = false
 var lastPlayerPos
 var timerCont=0
 var numrand=0
@@ -32,7 +33,7 @@ func _ready():
 	state_machine = anim_tree.get("parameters/playback")
 	player = get_node(player_path)
 	$Timer.start(3)
-	lastPlayerPos = Vector3(player.global_position.z,global_position.y,player.global_position.z)
+	lastPlayerPos = Vector3(player.global_transform.origin)
 
 
 func _process(delta):
@@ -41,15 +42,23 @@ func _process(delta):
 	gritar = anim_tree.get("parameters/conditions/grito")
 	atacar = anim_tree.get("parameters/conditions/atacar")
 	velocity = Vector3.ZERO
+	#print(lastPlayerPos)
 	match state_machine.get_current_node():
 		"Idle":
 			#print("idle")
 			interpolate_rotation(lastPlayerPos,delta)
+			
 		"Andar":
-			print("andar")
-			move_to_marker(delta)
+			if player_visto:
+				#print("busca")
+				move_to_lastPlayerPos(delta)
+				if global_position.distance_to(lastPlayerPos) < 2:
+					player_visto=false
+					iaBool=true
+			else :
+				move_to_marker(delta)
 		"Correr":
-			print("run")
+			#print("run")
 			move_to_player()
 		"Atacar":
 			#print("atacar")
@@ -58,38 +67,44 @@ func _process(delta):
 	
 	anim_tree.set("parameters/conditions/atacar", _target_in_range(RANGO_ATAQUE))
 	
-	#set_idle()
-	#AI_MAIN(delta)
+	set_idle()
+	AI_MAIN(delta)
 	
 	move_and_slide()
 	
 
 func _on_timer_timeout():
 	timerCont+=1
-	numrand = randi_range(1,3)
-	print(numrand)
-	#iaBool = !iaBool
+	numrand = randi_range(1,100)
+	if _target_in_range(10):
+		print("cuidao")
+		lastPlayerPos=Vector3(player.global_transform.origin)
+	if !player_visto:
+		iaBool = false
 
 func AI_MAIN(delta):
 	if player_detected:
 		interpolate_rotation(player.global_transform.origin, delta)
 		if !gritar and !atacar:
+			anim_tree.set("parameters/conditions/andar",false)
 			anim_tree.set("parameters/conditions/run",true)
 	else:
-		if numrand<=3:
+		if iaBool or numrand<=30 and !player_visto:
 			anim_tree.set("parameters/conditions/andar",false)
 			anim_tree.set("parameters/conditions/run",false)
 		else:
+			anim_tree.set("parameters/conditions/run",false)
 			anim_tree.set("parameters/conditions/andar",true)
 
 func grito():
-	anim_tree.set("parameters/conditions/andar",false)
-	anim_tree.set("parameters/conditions/run",false)
-	if !gritoUsado:
-		anim_tree.set("parameters/conditions/grito",!gritoUsado)
-		await get_tree().create_timer(2.0).timeout
-		anim_tree.set("parameters/conditions/grito",false)
-		gritoUsado=true
+	state_machine.travel("Gritar")
+	#anim_tree.set("parameters/conditions/andar",false)
+	#anim_tree.set("parameters/conditions/run",false)
+	#if !gritoUsado:
+		#anim_tree.set("parameters/conditions/grito",!gritoUsado)
+		#await get_tree().create_timer(2.0).timeout
+		#anim_tree.set("parameters/conditions/grito",false)
+		#gritoUsado=true
 
 func set_idle():
 	if !gritar and !andar and !correr and !atacar:
@@ -106,6 +121,13 @@ func interpolate_rotation(target_position, delta):#rota la direccion de forma fl
 
 func _target_in_range(rango):# Devuelve bool si está en rango
 	return global_position.distance_to(player.global_position) < rango
+
+func move_to_lastPlayerPos(delta):
+		# Moverse hacia el marcador actual
+	nav_agent.set_target_position(lastPlayerPos)
+	var next_nav_point = nav_agent.get_next_path_position()
+	velocity = (next_nav_point - global_transform.origin).normalized() * WALK_SPEED
+	interpolate_rotation(next_nav_point, delta)
 
 func move_to_marker(delta):
 	# Moverse hacia el marcador actual
@@ -130,11 +152,14 @@ func move_to_player():
 func on_enter(other: Node3D) -> void:
 	if other == player:
 		player_detected = true
+		player_visto=true
 		grito()
 func on_exit(other: Node3D) -> void:
 	if other == player:
+		print("sale")
 		player_detected = false
-		lastPlayerPos = Vector3(lastPlayerPos.x+ randi_range(-5,5), global_position.y,lastPlayerPos.z+ randi_range(-5,5))
+		gritoUsado=false
+		lastPlayerPos = Vector3(player.global_transform.origin)
 
 # Funcion de entrar a las casas
 func _on_casa_1_body_entered(other: Node3D) -> void:

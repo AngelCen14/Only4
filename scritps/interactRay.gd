@@ -20,12 +20,13 @@ func _process(delta):
 				player_llaves.get_llaves(keyname)
 				print(get_collider().name)
 		elif (get_collider().name=="Salida"):
-			if player_llaves.llaves>=4:
-				print("winer winer chiken diner")
-			else :
-				print("te falta odio...")
+			$Label.visible=true
+			if Input.is_action_just_pressed("take"):
+				if player_llaves.llaves>=4:
+					print("winer winer chiken diner")
+				else :
+					print("te falta odio...")
 		else :
 			$Label.visible=false
-		
 	else :
 		$Label.visible=false
