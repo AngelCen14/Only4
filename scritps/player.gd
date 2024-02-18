@@ -10,10 +10,11 @@ const AMPLITUD_AGITAMIENTO = 0.08
 var tiempo_agitamiento  = 0.0
 
 @export var llaves = 0;
-
+@onready var animation = $AnimationPlayer
 @onready var cabeza_jugador = $Cabeza
 @onready var camara = $Cabeza/Camera3D
 @onready var luz_linterna = $Cabeza/Camera3D/Linterna/Luz
+@onready var pasos = $Pasos
 
 
 func _ready():
@@ -58,6 +59,7 @@ func movimiento(delta):
 	if direction:
 		velocity.x = direction.x * VELOCIDAD
 		velocity.z = direction.z * VELOCIDAD
+		animation.play("Pasos")
 	else:
 		velocity.x = move_toward(velocity.x, 0, VELOCIDAD)
 		velocity.z = move_toward(velocity.z, 0, VELOCIDAD)
@@ -68,6 +70,10 @@ func movimiento(delta):
 	tiempo_agitamiento += delta * velocity.length()
 	camara.transform.origin = agitamiento_camara(tiempo_agitamiento)
 
+
+func reproducir_pasos():
+	pasos.pitch_scale=randf_range(0.8,1.2)
+	pasos.play()
 
 func agitamiento_camara(tiempo) -> Vector3:
 	var posicion = Vector3.ZERO

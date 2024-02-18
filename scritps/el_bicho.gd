@@ -22,10 +22,14 @@ var correr
 var gritar
 var atacar
 
+
 @export var markers_group : String
 @export var player_path : NodePath
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
+@onready var audio_grito = $Sonidos/Gritar
+@onready var pasos = $Sonidos/Pasos
+@onready var respirar = $Sonidos/Breath
 
 func _ready():
 	# Obtener todos los nodos en el grupo de marcadores
@@ -47,10 +51,9 @@ func _process(delta):
 		"Idle":
 			#print("idle")
 			interpolate_rotation(lastPlayerPos,delta)
-			
 		"Andar":
+			#print("andar")
 			if player_visto:
-				#print("busca")
 				move_to_lastPlayerPos(delta)
 				if global_position.distance_to(lastPlayerPos) < 2:
 					player_visto=false
@@ -76,19 +79,24 @@ func _process(delta):
 func _on_timer_timeout():
 	timerCont+=1
 	numrand = randi_range(1,100)
+	nav_agent.set_target_position(lastPlayerPos)
+	var next_nav_point = nav_agent.get_next_path_position()
+	print(next_nav_point)
+	print(global_transform.origin)
 	if _target_in_range(10):
-		print("cuidao")
 		lastPlayerPos=Vector3(player.global_transform.origin)
 	if !player_visto:
 		iaBool = false
 
 func AI_MAIN(delta):
 	if player_detected:
+		#print("detectado")
 		interpolate_rotation(player.global_transform.origin, delta)
 		if !gritar and !atacar:
 			anim_tree.set("parameters/conditions/andar",false)
 			anim_tree.set("parameters/conditions/run",true)
 	else:
+		#print("no detectado")
 		if iaBool or numrand<=30 and !player_visto:
 			anim_tree.set("parameters/conditions/andar",false)
 			anim_tree.set("parameters/conditions/run",false)
@@ -98,13 +106,8 @@ func AI_MAIN(delta):
 
 func grito():
 	state_machine.travel("Gritar")
-	#anim_tree.set("parameters/conditions/andar",false)
-	#anim_tree.set("parameters/conditions/run",false)
-	#if !gritoUsado:
-		#anim_tree.set("parameters/conditions/grito",!gritoUsado)
-		#await get_tree().create_timer(2.0).timeout
-		#anim_tree.set("parameters/conditions/grito",false)
-		#gritoUsado=true
+	audio_grito.pitch_scale=randf_range(0.9,1.0)
+	audio_grito.play()
 
 func set_idle():
 	if !gritar and !andar and !correr and !atacar:
@@ -148,25 +151,33 @@ func move_to_player():
 	velocity = (next_nav_point - global_transform.origin).normalized() * RUN_SPEED
 	look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
 
+func audio_pasos():
+	pasos.pitch_scale=randf_range(0.6,0.8)
+	pasos.play()
+
 # Funciones del area de vision 
 func on_enter(other: Node3D) -> void:
 	if other == player:
 		player_detected = true
 		player_visto=true
+		respirar.pitch_scale=randf_range(0.8,1.0)
 		grito()
 func on_exit(other: Node3D) -> void:
 	if other == player:
-		print("sale")
 		player_detected = false
 		gritoUsado=false
+		respirar.pitch_scale=randf_range(0.65,0.75)
 		lastPlayerPos = Vector3(player.global_transform.origin)
 
 # Funcion de entrar a las casas
 func _on_casa_1_body_entered(other: Node3D) -> void:
 	if other == player:
 		player_detected = false
+		player_visto=false
 		grito()
 		$AreaVision.monitoring = false
 
+
 func _on_casa_1_body_exited(other: Node3D) -> void:
-	$AreaVision.monitoring = true
+	if other == player:
+		$AreaVision.set_monitoring(true)
