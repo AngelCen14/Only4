@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://h2n68hri43t7"]
+[gd_scene load_steps=8 format=3 uid="uid://h2n68hri43t7"]
 
 [ext_resource type="Script" path="res://scritps/ui_scripts/menu_principal.gd" id="1_l51ka"]
 [ext_resource type="Theme" uid="uid://d1b77oehunhga" path="res://assets/temas_interfaz/ui_theme.tres" id="1_siint"]
@@ -17,9 +17,8 @@ shadow_size = 25
 shadow_color = Color(0, 0, 0, 0.831373)
 shadow_offset = Vector2(10, 10)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lpe2w"]
-
 [node name="MenuPrincipal" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,33 +53,26 @@ vertical_alignment = 3
 
 [node name="ContenedorBotones" type="VBoxContainer" parent="ContenedorPrincipal"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 10
 
 [node name="botonJugar" type="Button" parent="ContenedorPrincipal/ContenedorBotones"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 text = "JUGAR"
-icon = SubResource("ViewportTexture_lpe2w")
 script = ExtResource("4_4t2os")
 
 [node name="botonAjustes" type="Button" parent="ContenedorPrincipal/ContenedorBotones"]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
-text = "AJUSTES"
-icon = SubResource("ViewportTexture_lpe2w")
+text = "Ajustes"
 script = ExtResource("4_4t2os")
 
 [node name="botonSalir" type="Button" parent="ContenedorPrincipal/ContenedorBotones"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-text = "SALIR"
+text = "Salir"
 script = ExtResource("4_4t2os")
 
 [node name="FondoMenu" parent="." instance=ExtResource("3_h6uwa")]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://prfudcm7pi40"]
+
+[ext_resource type="Theme" uid="uid://d1b77oehunhga" path="res://assets/temas_interfaz/ui_theme.tres" id="1_xwmv5"]
+[ext_resource type="Script" path="res://scritps/ui_scripts/menu_pausa.gd" id="2_0bm1y"]
+[ext_resource type="Script" path="res://scritps/ui_scripts/animacion_boton.gd" id="2_5exxe"]
+[ext_resource type="PackedScene" uid="uid://dhr2pvsvafcdt" path="res://escenas/UI/menu_ajustes.tscn" id="4_go0vg"]
+
+[node name="MenuPausa" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xwmv5")
+script = ExtResource("2_0bm1y")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -200.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="BotonReanudar" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "REANUDAR
+"
+script = ExtResource("2_5exxe")
+
+[node name="BotonAjustes" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "AJUSTES
+"
+script = ExtResource("2_5exxe")
+
+[node name="BotonSalir" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "VOLVER AL MENU"
+script = ExtResource("2_5exxe")
+
+[node name="MenuAjustes" parent="." instance=ExtResource("4_go0vg")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BotonReanudar" to="." method="_on_boton_reanudar_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BotonAjustes" to="." method="_on_boton_ajustes_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BotonSalir" to="." method="_on_boton_salir_pressed"]

@@ -12,6 +12,7 @@ extends Control
 @onready var menu_ajustes: MenuAjustes = $MenuAjustes
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	conectar_signals()
 
 func conectar_signals():

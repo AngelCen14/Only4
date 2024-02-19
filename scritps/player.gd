@@ -24,7 +24,6 @@ func _physics_process(delta):
 	gravedad(delta)
 	control_linterna()
 	movimiento(delta)
-	press_esc(delta)
 
 
 func _unhandled_input(event):
@@ -33,16 +32,6 @@ func _unhandled_input(event):
 			cabeza_jugador.rotate_y(-event.relative.x * SENSIBILIDAD)
 			camara.rotate_x(-event.relative.y * SENSIBILIDAD)
 			camara.rotation.x = clamp(camara.rotation.x, deg_to_rad(-60), deg_to_rad(60))
-
-
-func press_esc(delta):
-	# Verificamos si se ha pulsado la tecla Esc
-	if Input.is_action_just_pressed("esc"):
-		# Cambiamos el modo del ratón entre capturado y liberado
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func gravedad(delta):

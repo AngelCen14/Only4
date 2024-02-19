@@ -14,7 +14,6 @@ config/name="Only4"
 run/main_scene="res://escenas/UI/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
-boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +23,7 @@ GLOBAL="*res://scritps/autoloads/global.gd"
 
 [display]
 
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
