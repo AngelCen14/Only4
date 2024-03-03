@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmtjnku1atpog"]
+[gd_scene load_steps=5 format=3 uid="uid://bmtjnku1atpog"]
 
 [ext_resource type="Theme" uid="uid://d1b77oehunhga" path="res://assets/temas_interfaz/ui_theme.tres" id="1_y8qf5"]
 [ext_resource type="Script" path="res://scritps/ui_scripts/ajustes_graficos.gd" id="2_3k684"]
 [ext_resource type="LabelSettings" uid="uid://dvjd658ifem83" path="res://assets/temas_interfaz/label_settings/opciones_menu_ajustes_label_settings.tres" id="2_plcio"]
+[ext_resource type="PackedScene" uid="uid://dvhp2rvb0hvbn" path="res://escenas/UI/audio_slider.tscn" id="4_ndphk"]
 
 [node name="TabContainerAjustes" type="Control"]
 layout_mode = 3
@@ -103,32 +104,19 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sonido/MarginContainer/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/separation = 48
+theme_override_constants/separation = 100
 
-[node name="Label" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="AudioSlider" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_ndphk")]
 layout_mode = 2
-text = "Opcion Sonido 1"
-label_settings = ExtResource("2_plcio")
+nombre_bus = "Master"
 
-[node name="Label2" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="AudioSlider2" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_ndphk")]
 layout_mode = 2
-text = "Opcion Sonido 2"
-label_settings = ExtResource("2_plcio")
+nombre_bus = "Musica"
 
-[node name="Label3" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="AudioSlider3" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_ndphk")]
 layout_mode = 2
-text = "Opcion Sonido 3"
-label_settings = ExtResource("2_plcio")
-
-[node name="Label4" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Opcion Sonido 4"
-label_settings = ExtResource("2_plcio")
-
-[node name="Label5" type="Label" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Opcion Sonido 5"
-label_settings = ExtResource("2_plcio")
+nombre_bus = "Efectos"
 
 [node name="Controles" type="TabBar" parent="TabContainer"]
 visible = false

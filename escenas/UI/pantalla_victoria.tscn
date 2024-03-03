@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnmnjtvh3gcvk"]
+
+[ext_resource type="Theme" uid="uid://d1b77oehunhga" path="res://assets/temas_interfaz/ui_theme.tres" id="1_y06y8"]
+[ext_resource type="Script" path="res://scritps/ui_scripts/pantalla_victoria.gd" id="2_7jxgu"]
+[ext_resource type="FontFile" uid="uid://c8ddkauss0itg" path="res://assets/fuentes/Ghastly Panic.ttf" id="3_ejwsp"]
+[ext_resource type="Script" path="res://scritps/ui_scripts/animacion_boton.gd" id="5_2ahqp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_garpb"]
+font = ExtResource("3_ejwsp")
+font_size = 300
+
+[node name="PantallaVictoria" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y06y8")
+script = ExtResource("2_7jxgu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 0.0352941, 0.0156863, 0.905882)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.5
+offset_top = -138.0
+offset_right = 325.5
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HAS GANADO !"
+label_settings = SubResource("LabelSettings_garpb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.5
+offset_top = -81.0
+offset_right = 150.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "SALIR AL MENU"
+script = ExtResource("5_2ahqp")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="on_click_boton_salir_menu"]

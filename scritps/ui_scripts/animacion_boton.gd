@@ -20,3 +20,4 @@ func on_mouse_exit():
 	scale = original_scale
 	position += (size * ESCALA /4)
 	add_theme_font_size_override("font_size", original_font_size)
+

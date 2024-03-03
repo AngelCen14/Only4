@@ -89,6 +89,7 @@ clip_text = true
 [node name="Pasos" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ktddf")
 volume_db = -8.0
+bus = &"Efectos"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

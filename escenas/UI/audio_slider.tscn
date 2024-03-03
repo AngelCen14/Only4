@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvhp2rvb0hvbn"]
+
+[ext_resource type="Script" path="res://scritps/ui_scripts/ajustes_sonido.gd" id="1_e3huw"]
+[ext_resource type="LabelSettings" uid="uid://dvjd658ifem83" path="res://assets/temas_interfaz/label_settings/opciones_menu_ajustes_label_settings.tres" id="1_t2yuj"]
+
+[node name="AudioSlider" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e3huw")
+
+[node name="HboxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+theme_override_constants/separation = 48
+
+[node name="Volumen" type="Label" parent="HboxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Volumen"
+label_settings = ExtResource("1_t2yuj")
+
+[node name="VSeparator" type="VSeparator" parent="HboxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HboxContainer"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+
+[node name="VSeparator2" type="VSeparator" parent="HboxContainer"]
+layout_mode = 2
+
+[node name="NumVolumen" type="Label" parent="HboxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("1_t2yuj")
