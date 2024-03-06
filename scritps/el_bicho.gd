@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const WALK_SPEED = 1.8
-const RUN_SPEED = 3.0
+const WALK_SPEED = 2
+const RUN_SPEED = 3.8
 const RANGO_ATAQUE = 2
 const VELOCIDAD_ROTACION = 2
 
@@ -21,7 +21,9 @@ var andar
 var correr
 var gritar
 var atacar
-
+var blood
+var bloodNum = 0.0
+var vidas = 3
 
 @export var markers_group : String
 @export var player_path : NodePath
@@ -30,12 +32,15 @@ var atacar
 @onready var audio_grito = $Sonidos/Gritar
 @onready var pasos = $Sonidos/Pasos
 @onready var respirar = $Sonidos/Breath
+@onready var audio_ataque = $Sonidos/ataque
+@onready var audio_golpe = $Sonidos/golpe
 
 func _ready():
 	# Obtener todos los nodos en el grupo de marcadores
 	markers = get_tree().get_nodes_in_group(markers_group)
 	state_machine = anim_tree.get("parameters/playback")
 	player = get_node(player_path)
+	blood = get_node("../../Player/Cabeza/Camera3D/Blood")
 	$Timer.start(3)
 	lastPlayerPos = Vector3(player.global_transform.origin)
 
@@ -81,8 +86,8 @@ func _on_timer_timeout():
 	numrand = randi_range(1,100)
 	nav_agent.set_target_position(lastPlayerPos)
 	var next_nav_point = nav_agent.get_next_path_position()
-	print(next_nav_point)
-	print(global_transform.origin)
+	#print(next_nav_point)
+	#print(global_transform.origin)
 	if _target_in_range(10):
 		lastPlayerPos=Vector3(player.global_transform.origin)
 	if !player_visto:
@@ -97,12 +102,24 @@ func AI_MAIN(delta):
 			anim_tree.set("parameters/conditions/run",true)
 	else:
 		#print("no detectado")
-		if iaBool or numrand<=30 and !player_visto:
+		if iaBool or numrand<=20 and !player_visto:
 			anim_tree.set("parameters/conditions/andar",false)
 			anim_tree.set("parameters/conditions/run",false)
 		else:
 			anim_tree.set("parameters/conditions/run",false)
 			anim_tree.set("parameters/conditions/andar",true)
+
+func golpe():
+	audio_ataque.pitch_scale=randf_range(0.8,0.9)
+	audio_ataque.play()
+	if _target_in_range(2):
+		audio_golpe.pitch_scale=randf_range(0.9,1.0)
+		audio_golpe.play()
+		bloodNum += 0.25
+		blood.set_modulate(Color(1, 1, 1, bloodNum))
+		vidas -= 1
+		if vidas <=0:
+			print("moridoooo por gei")
 
 func grito():
 	state_machine.travel("Gritar")
@@ -168,7 +185,6 @@ func on_exit(other: Node3D) -> void:
 		gritoUsado=false
 		respirar.pitch_scale=randf_range(0.65,0.75)
 		lastPlayerPos = Vector3(player.global_transform.origin)
-
 # Funcion de entrar a las casas
 func _on_casa_1_body_entered(other: Node3D) -> void:
 	if other == player:
@@ -176,7 +192,6 @@ func _on_casa_1_body_entered(other: Node3D) -> void:
 		player_visto=false
 		grito()
 		$AreaVision.monitoring = false
-
 
 func _on_casa_1_body_exited(other: Node3D) -> void:
 	if other == player:

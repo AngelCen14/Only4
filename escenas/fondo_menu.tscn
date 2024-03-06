@@ -35,12 +35,12 @@ sky_energy_multiplier = 0.5
 sky_cover = ExtResource("1_1tj3r")
 sun_angle_max = 0.0
 
-[sub_resource type="Sky" id="Sky_1aaxu"]
+[sub_resource type="Sky" id="Sky_hssp0"]
 sky_material = SubResource("ProceduralSkyMaterial_lqpnx")
 
 [sub_resource type="Environment" id="Environment_rpl2d"]
 background_mode = 2
-sky = SubResource("Sky_1aaxu")
+sky = SubResource("Sky_hssp0")
 tonemap_mode = 1
 tonemap_exposure = 0.3
 ssao_enabled = true
@@ -52,7 +52,7 @@ fog_height_density = 0.7
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmmsl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81kav"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_h0sq7")
@@ -87,7 +87,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_qmmsl"),
+"material": SubResource("ShaderMaterial_81kav"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
