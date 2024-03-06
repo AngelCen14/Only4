@@ -24,6 +24,8 @@ func _process(delta):
 			if Input.is_action_just_pressed("take"):
 				if player_llaves.llaves>=4:
 					print("winer winer chiken diner")
+					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+					get_tree().change_scene_to_file(GLOBAL.ESCENA_VICTORIA)
 				else :
 					print("te falta odio...")
 		else :

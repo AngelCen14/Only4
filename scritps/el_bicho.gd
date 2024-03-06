@@ -119,7 +119,8 @@ func golpe():
 		blood.set_modulate(Color(1, 1, 1, bloodNum))
 		vidas -= 1
 		if vidas <=0:
-			print("moridoooo por gei")
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			get_tree().change_scene_to_file(GLOBAL.ESCENA_GAME_OVER)
 
 func grito():
 	state_machine.travel("Gritar")
