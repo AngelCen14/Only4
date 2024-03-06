@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const VELOCIDAD = 5.0
+const VELOCIDAD = 3.5
 const GRAVEDAD = 9.8
 const SENSIBILIDAD = 0.003
 
